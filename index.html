@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lexa — Legal Clarity for Everyone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & TOKENS ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0f;
+  --ink2:#2a2a30;
+  --ink3:#5a5a6a;
+  --paper:#faf9f6;
+  --paper2:#f3f1ec;
+  --paper3:#e8e4dc;
+  --gold:#c9a84c;
+  --gold2:#e8c97a;
+  --teal:#1a6b5a;
+  --teal2:#2a9b80;
+  --teal-light:#e6f4f0;
+  --red:#c0392b;
+  --red-light:#fdf0ee;
+  --amber:#d4820a;
+  --amber-light:#fdf5e6;
+  --green:#1a7a4a;
+  --green-light:#e8f5ee;
+  --shadow-sm:0 1px 3px rgba(13,13,15,0.08),0 1px 2px rgba(13,13,15,0.06);
+  --shadow-md:0 4px 16px rgba(13,13,15,0.10),0 2px 6px rgba(13,13,15,0.07);
+  --shadow-lg:0 16px 48px rgba(13,13,15,0.14),0 4px 12px rgba(13,13,15,0.08);
+  --r:12px;
+  --r-lg:20px;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--ink);
+  min-height:100vh;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ──────────────────────────────────── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.4;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,249,246,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--paper3);
+  padding:0 clamp(16px,4vw,48px);
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:var(--font-display);
+  font-size:22px;font-weight:700;
+  color:var(--ink);letter-spacing:-0.5px;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo span{color:var(--teal)}
+.nav-logo-mark{
+  width:30px;height:30px;
+  background:var(--teal);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;color:#fff;
+}
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-btn{
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:8px;padding:5px 12px;
+  font-family:var(--font-body);font-size:12px;font-weight:500;
+  color:var(--ink3);cursor:pointer;transition:all .15s;
+}
+.lang-btn.active,.lang-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-cta{
+  background:var(--teal);color:#fff;
+  border:none;border-radius:8px;padding:7px 16px;
+  font-family:var(--font-body);font-size:13px;font-weight:600;
+  cursor:pointer;transition:background .15s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.nav-cta:hover{background:var(--teal2)}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero{
+  max-width:1100px;margin:0 auto;
+  padding:clamp(48px,8vw,100px) clamp(16px,4vw,48px) clamp(40px,6vw,72px);
+  display:grid;grid-template-columns:1fr;
+  gap:40px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--teal-light);border:1px solid rgba(26,107,90,0.2);
+  border-radius:100px;padding:5px 14px;
+  font-size:12px;font-weight:600;color:var(--teal);
+  letter-spacing:0.3px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero-eyebrow::before{content:'⚖️';font-size:13px}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(38px,6vw,72px);
+  font-weight:300;line-height:1.1;
+  letter-spacing:-1.5px;
+  color:var(--ink);
+  max-width:700px;
+}
+.hero h1 em{
+  font-style:italic;color:var(--teal);
+  font-weight:400;
+}
+.hero h1 strong{
+  font-weight:700;
+}
+.hero-sub{
+  font-size:clamp(15px,1.8vw,18px);
+  color:var(--ink3);
+  max-width:540px;
+  line-height:1.7;
+  margin-top:16px;
+}
+.hero-langs{
+  display:flex;align-items:center;gap:8px;
+  margin-top:20px;flex-wrap:wrap;
+}
+.hero-lang-tag{
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:100px;padding:3px 12px;
+  font-size:11px;color:var(--ink3);font-weight:500;
+}
+
+/* ─── ENTRY CARDS ────────────────────────────────────────────── */
+.entry-grid{
+  max-width:1100px;margin:0 auto;
+  padding:0 clamp(16px,4vw,48px) clamp(40px,6vw,72px);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+.entry-card{
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:var(--r-lg);padding:32px;
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;transition:all .2s;
+  position:relative;overflow:hidden;
+}
+.entry-card::before{
+  content:'';position:absolute;inset:0;
+  opacity:0;transition:opacity .2s;
+}
+.entry-card.chat-card::before{background:linear-gradient(135deg,rgba(26,107,90,0.04),transparent)}
+.entry-card.scan-card::before{background:linear-gradient(135deg,rgba(201,168,76,0.06),transparent)}
+.entry-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.entry-card:hover::before{opacity:1}
+.card-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin-bottom:20px;
+}
+.chat-card .card-icon{background:var(--teal-light)}
+.scan-card .card-icon{background:var(--amber-light)}
+.card-title{
+  font-family:var(--font-display);
+  font-size:24px;font-weight:400;
+  letter-spacing:-0.5px;margin-bottom:10px;
+}
+.card-desc{font-size:14px;color:var(--ink3);line-height:1.7;margin-bottom:24px}
+.card-examples{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.card-example{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--ink3);
+}
+.card-example::before{content:'→';color:var(--teal);font-weight:600;flex-shrink:0}
+.card-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:10px;
+  font-family:var(--font-body);font-size:13px;font-weight:600;
+  border:none;cursor:pointer;transition:all .15s;
+  text-decoration:none;
+}
+.chat-card .card-btn{background:var(--teal);color:#fff}
+.chat-card .card-btn:hover{background:var(--teal2)}
+.scan-card .card-btn{background:var(--ink);color:#fff}
+.scan-card .card-btn:hover{background:var(--ink2)}
+
+/* ─── SECTION DIVIDER ────────────────────────────────────────── */
+.section-rule{
+  max-width:1100px;margin:0 auto;
+  padding:0 clamp(16px,4vw,48px);
+  border-top:1px solid var(--paper3);
+  margin-bottom:clamp(32px,5vw,60px);
+}
+
+/* ─── MAIN APP PANEL ─────────────────────────────────────────── */
+.app-panel{
+  max-width:1100px;margin:0 auto;
+  padding:0 clamp(16px,4vw,48px) clamp(48px,8vw,96px);
+  display:none;
+}
+.app-panel.visible{display:block}
+.panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:12px;
+}
+.panel-title{
+  font-family:var(--font-display);
+  font-size:clamp(22px,3vw,32px);font-weight:400;
+  letter-spacing:-0.5px;
+}
+.panel-back{
+  background:transparent;border:1px solid var(--paper3);
+  border-radius:8px;padding:6px 14px;
+  font-family:var(--font-body);font-size:12px;color:var(--ink3);
+  cursor:pointer;transition:all .15s;
+  display:flex;align-items:center;gap:6px;
+}
+.panel-back:hover{background:var(--paper2);color:var(--ink)}
+
+/* ─── CHAT INTERFACE ─────────────────────────────────────────── */
+.chat-wrap{
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--shadow-md);
+  display:flex;flex-direction:column;
+  height:clamp(500px,70vh,720px);
+}
+.chat-messages{
+  flex:1;overflow-y:auto;
+  padding:24px;
+  display:flex;flex-direction:column;gap:16px;
+  scroll-behavior:smooth;
+}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--paper3);border-radius:2px}
+.msg{display:flex;gap:10px;align-items:flex-start;animation:msg-in .2s ease}
+@keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.msg.user{flex-direction:row-reverse}
+.msg-avatar{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;
+}
+.msg.agent .msg-avatar{background:var(--teal-light);color:var(--teal)}
+.msg.user .msg-avatar{background:var(--paper2);color:var(--ink3)}
+.msg-bubble{
+  max-width:75%;padding:12px 16px;
+  border-radius:16px;font-size:14px;line-height:1.65;
+}
+.msg.agent .msg-bubble{
+  background:var(--paper2);color:var(--ink);
+  border-bottom-left-radius:4px;
+}
+.msg.user .msg-bubble{
+  background:var(--teal);color:#fff;
+  border-bottom-right-radius:4px;
+}
+.msg-bubble strong{font-weight:600}
+.msg-bubble ul{padding-left:18px;margin-top:6px}
+.msg-bubble ul li{margin-bottom:4px}
+.msg-bubble .action-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:100px;padding:4px 12px;
+  font-size:12px;color:var(--teal);font-weight:500;
+  margin:4px 4px 0 0;cursor:pointer;transition:all .15s;
+}
+.msg-bubble .action-chip:hover{background:var(--teal-light);border-color:var(--teal)}
+.typing-indicator{display:flex;gap:4px;padding:6px 0}
+.typing-indicator span{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--ink3);animation:typing 1.2s infinite;
+}
+.typing-indicator span:nth-child(2){animation-delay:.2s}
+.typing-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{opacity:.3;transform:scale(1)}30%{opacity:1;transform:scale(1.2)}}
+
+.chat-footer{
+  border-top:1px solid var(--paper3);padding:16px;
+  background:#fff;
+}
+.chat-disclaimer{
+  font-size:11px;color:var(--ink3);text-align:center;
+  margin-bottom:10px;
+  padding:6px 12px;
+  background:var(--paper2);border-radius:6px;
+}
+.chat-input-row{display:flex;gap:10px;align-items:flex-end}
+.chat-textarea{
+  flex:1;resize:none;
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:12px;padding:11px 14px;
+  font-family:var(--font-body);font-size:14px;color:var(--ink);
+  outline:none;transition:border-color .15s;
+  max-height:120px;min-height:44px;line-height:1.5;
+}
+.chat-textarea:focus{border-color:var(--teal)}
+.chat-textarea::placeholder{color:var(--ink3)}
+.chat-send{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--teal);border:none;color:#fff;
+  font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;flex-shrink:0;
+}
+.chat-send:hover{background:var(--teal2)}
+.chat-send:disabled{background:var(--paper3);cursor:not-allowed}
+.starter-prompts{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin-bottom:10px;
+}
+.starter-chip{
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:100px;padding:5px 13px;
+  font-size:12px;color:var(--ink3);cursor:pointer;
+  transition:all .15s;white-space:nowrap;
+}
+.starter-chip:hover{background:var(--teal-light);border-color:var(--teal);color:var(--teal)}
+
+/* ─── SCANNER INTERFACE ──────────────────────────────────────── */
+.scanner-wrap{display:flex;flex-direction:column;gap:20px}
+.scan-input-box{
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:var(--r-lg);padding:28px;
+  box-shadow:var(--shadow-sm);
+}
+.scan-input-box h3{
+  font-family:var(--font-display);
+  font-size:18px;font-weight:400;margin-bottom:6px;
+}
+.scan-input-box p{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.tab-row{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--paper3);padding-bottom:12px}
+.tab-btn{
+  background:transparent;border:none;
+  border-radius:8px;padding:6px 16px;
+  font-family:var(--font-body);font-size:13px;font-weight:500;
+  color:var(--ink3);cursor:pointer;transition:all .15s;
+}
+.tab-btn.active{background:var(--teal);color:#fff}
+.scan-textarea{
+  width:100%;height:180px;resize:vertical;
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:var(--r);padding:14px;
+  font-family:var(--font-body);font-size:13px;color:var(--ink);
+  outline:none;transition:border-color .15s;line-height:1.6;
+}
+.scan-textarea:focus{border-color:var(--teal)}
+.scan-textarea::placeholder{color:var(--ink3)}
+.scan-url-input{
+  width:100%;background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:var(--r);padding:11px 14px;
+  font-family:var(--font-body);font-size:13px;color:var(--ink);
+  outline:none;transition:border-color .15s;
+}
+.scan-url-input:focus{border-color:var(--teal)}
+.scan-url-input::placeholder{color:var(--ink3)}
+.scan-btn{
+  margin-top:12px;
+  background:var(--ink);color:#fff;border:none;
+  border-radius:10px;padding:11px 24px;
+  font-family:var(--font-body);font-size:14px;font-weight:600;
+  cursor:pointer;transition:background .15s;
+  display:flex;align-items:center;gap:8px;
+}
+.scan-btn:hover{background:var(--ink2)}
+.scan-btn:disabled{background:var(--paper3);color:var(--ink3);cursor:not-allowed}
+
+/* ─── SCAN RESULTS ───────────────────────────────────────────── */
+.scan-results{
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:var(--r-lg);padding:28px;
+  box-shadow:var(--shadow-sm);
+  display:none;
+}
+.scan-results.visible{display:block}
+.results-top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;flex-wrap:wrap;gap:12px;
+}
+.risk-badge-lg{
+  display:flex;align-items:center;gap:10px;
+}
+.risk-pill{
+  font-size:13px;font-weight:700;letter-spacing:0.3px;
+  padding:5px 16px;border-radius:100px;
+}
+.risk-pill.LOW{background:var(--green-light);color:var(--green)}
+.risk-pill.MEDIUM{background:var(--amber-light);color:var(--amber)}
+.risk-pill.HIGH{background:var(--red-light);color:var(--red)}
+.risk-pill.CRITICAL{background:#fde8e8;color:#8b0000}
+.risk-score-num{font-size:13px;color:var(--ink3)}
+.risk-bar{height:8px;background:var(--paper3);border-radius:4px;overflow:hidden;margin-bottom:20px}
+.risk-bar-fill{height:100%;border-radius:4px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.risk-bar-fill.LOW{background:var(--green)}
+.risk-bar-fill.MEDIUM{background:var(--amber)}
+.risk-bar-fill.HIGH{background:var(--red)}
+.risk-bar-fill.CRITICAL{background:#8b0000}
+.results-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.meta-card{
+  background:var(--paper2);border-radius:10px;
+  padding:12px 14px;
+}
+.meta-card-label{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink3);margin-bottom:4px;font-weight:600}
+.meta-card-val{font-size:13px;font-weight:600;color:var(--ink)}
+.verdict-section{
+  background:var(--paper2);border-radius:var(--r);
+  padding:16px;margin-bottom:20px;
+  font-size:14px;line-height:1.7;color:var(--ink2);
+}
+.verdict-section strong{font-weight:600;color:var(--ink);display:block;margin-bottom:4px;font-size:13px}
+.results-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.results-col-title{
+  font-size:11px;text-transform:uppercase;letter-spacing:0.5px;
+  color:var(--ink3);font-weight:600;margin-bottom:10px;
+}
+.flag-item{
+  display:flex;gap:8px;align-items:flex-start;
+  padding:9px 12px;background:var(--red-light);
+  border:1px solid rgba(192,57,43,0.15);
+  border-radius:8px;margin-bottom:6px;
+  font-size:13px;color:#7a2020;line-height:1.5;
+}
+.flag-item-icon{flex-shrink:0;margin-top:1px}
+.summary-item{
+  display:flex;gap:8px;align-items:flex-start;
+  padding:8px 12px;background:var(--paper2);
+  border-radius:8px;margin-bottom:5px;
+  font-size:13px;color:var(--ink2);line-height:1.5;
+}
+.summary-dot{color:var(--teal);flex-shrink:0;margin-top:4px;font-size:9px}
+.benchmark-box{
+  background:var(--teal-light);border:1px solid rgba(26,107,90,0.15);
+  border-radius:var(--r);padding:12px 14px;
+  font-size:13px;color:var(--teal);line-height:1.6;
+  margin-top:20px;
+}
+
+/* expand toggle */
+.expand-toggle{
+  width:100%;background:transparent;
+  border:1px dashed var(--paper3);border-radius:10px;
+  padding:10px;margin-top:12px;
+  font-family:var(--font-body);font-size:13px;font-weight:500;
+  color:var(--teal);cursor:pointer;transition:all .15s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.expand-toggle:hover{background:var(--teal-light);border-color:var(--teal)}
+.expandable{display:none;margin-top:12px}
+.expandable.open{display:block}
+
+/* ─── LOADING STATE ──────────────────────────────────────────── */
+.scan-loading{
+  display:none;text-align:center;padding:40px;
+}
+.scan-loading.visible{display:block}
+.scan-spinner{
+  width:40px;height:40px;
+  border:3px solid var(--paper3);border-top-color:var(--teal);
+  border-radius:50%;animation:spin .7s linear infinite;
+  margin:0 auto 16px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scan-loading p{font-size:14px;color:var(--ink3)}
+.scan-loading-step{font-size:12px;color:var(--paper3);margin-top:4px}
+
+/* ─── HOW IT WORKS ───────────────────────────────────────────── */
+.how-section{
+  background:var(--paper2);border-top:1px solid var(--paper3);
+  padding:clamp(48px,7vw,88px) clamp(16px,4vw,48px);
+  margin-top:clamp(40px,6vw,72px);
+}
+.how-inner{max-width:1100px;margin:0 auto}
+.how-title{
+  font-family:var(--font-display);
+  font-size:clamp(28px,4vw,44px);font-weight:300;
+  letter-spacing:-0.8px;margin-bottom:40px;
+  color:var(--ink);
+}
+.how-title em{font-style:italic;color:var(--teal)}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+.how-step{padding:24px;border-radius:var(--r-lg);background:#fff;border:1px solid var(--paper3)}
+.how-num{
+  font-family:var(--font-display);font-size:40px;font-weight:700;
+  color:var(--paper3);line-height:1;margin-bottom:12px;
+}
+.how-step-title{font-size:15px;font-weight:600;margin-bottom:6px}
+.how-step-desc{font-size:13px;color:var(--ink3);line-height:1.6}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer{
+  background:var(--ink);color:var(--paper3);
+  padding:clamp(32px,5vw,56px) clamp(16px,4vw,48px);
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;flex-wrap:wrap;
+  justify-content:space-between;align-items:flex-start;
+  gap:24px;
+}
+.footer-brand{
+  font-family:var(--font-display);
+  font-size:20px;font-weight:300;color:#fff;
+  margin-bottom:6px;
+}
+.footer-brand span{color:var(--gold)}
+.footer-sub{font-size:12px;color:#888;line-height:1.6;max-width:280px}
+.footer-disclaimer{
+  font-size:11px;color:#555;
+  max-width:1100px;margin:24px auto 0;
+  padding-top:20px;border-top:1px solid #222;
+  line-height:1.6;
+}
+
+/* ─── ERROR BOX ──────────────────────────────────────────────── */
+.error-banner{
+  background:var(--red-light);border:1px solid rgba(192,57,43,0.2);
+  border-radius:var(--r);padding:12px 16px;
+  font-size:13px;color:var(--red);
+  display:none;margin-top:12px;
+}
+.error-banner.visible{display:block}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:600px){
+  .results-cols{grid-template-columns:1fr}
+  .chat-wrap{height:calc(100vh - 200px)}
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo" onclick="showHome()" style="cursor:pointer">
+    <div class="nav-logo-mark">⚖</div>
+    Le<span>xa</span>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+    <a class="nav-cta" onclick="openChat()">
+      <span>⊕</span> <span data-t="nav_cta">Get Help</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── HOME SECTION ─────────────────────────────────────────── -->
+<section id="home-section">
+
+  <!-- Hero -->
+  <div class="hero fade-up visible">
+    <div>
+      <div class="hero-eyebrow" data-t="eyebrow">Legal Clarity for Everyone</div>
+      <h1 data-t="h1_html">The legal system is <em>complex.</em><br/><strong>You deserve clarity.</strong></h1>
+      <p class="hero-sub" data-t="hero_sub">Lexa helps you understand your legal situation, spot red flags in contracts, and know your next steps — in plain language, for free.</p>
+      <div class="hero-langs">
+        <span style="font-size:12px;color:var(--ink3);font-weight:500;">Available in:</span>
+        <span class="hero-lang-tag">🇺🇸 English</span>
+        <span class="hero-lang-tag">🇪🇸 Español</span>
+        <span class="hero-lang-tag">🇨🇳 中文</span>
+        <span class="hero-lang-tag" style="opacity:0.5">+ more soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry Cards -->
+  <div class="entry-grid fade-up visible">
+    <div class="entry-card chat-card" onclick="openChat()">
+      <div class="card-icon">💬</div>
+      <div class="card-title" data-t="chat_title">Ask Lexa</div>
+      <div class="card-desc" data-t="chat_desc">Describe your situation and get clear, factual guidance on your options and next steps.</div>
+      <div class="card-examples">
+        <div class="card-example" data-t="ex1">I was in a car accident</div>
+        <div class="card-example" data-t="ex2">My landlord won't return my deposit</div>
+        <div class="card-example" data-t="ex3">I received a court summons</div>
+        <div class="card-example" data-t="ex4">I was wrongfully terminated</div>
+      </div>
+      <button class="card-btn" data-t="chat_btn">Start a conversation →</button>
+    </div>
+
+    <div class="entry-card scan-card" onclick="openScanner()">
+      <div class="card-icon">🔍</div>
+      <div class="card-title" data-t="scan_title">Scan a Document</div>
+      <div class="card-desc" data-t="scan_desc">Paste any Terms of Service, contract, or legal document. We'll flag the red flags and summarize what you're agreeing to.</div>
+      <div class="card-examples">
+        <div class="card-example" data-t="sex1">Terms of Service agreements</div>
+        <div class="card-example" data-t="sex2">Rental or lease contracts</div>
+        <div class="card-example" data-t="sex3">Employment agreements</div>
+        <div class="card-example" data-t="sex4">Privacy policies</div>
+      </div>
+      <button class="card-btn" data-t="scan_btn">Scan a document →</button>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <div class="how-section">
+    <div class="how-inner">
+      <h2 class="how-title" data-t="how_title">How <em>Lexa</em> works</h2>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="how-num">01</div>
+          <div class="how-step-title" data-t="step1_title">Describe your situation</div>
+          <div class="how-step-desc" data-t="step1_desc">Tell Lexa what's happening in your own words — no legal jargon needed.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">02</div>
+          <div class="how-step-title" data-t="step2_title">Get clear options</div>
+          <div class="how-step-desc" data-t="step2_desc">Lexa explains what your options are, what agencies to contact, and what to document.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">03</div>
+          <div class="how-step-title" data-t="step3_title">Understand your rights</div>
+          <div class="how-step-desc" data-t="step3_desc">Know what protections exist and what the realistic path forward looks like.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">04</div>
+          <div class="how-step-title" data-t="step4_title">Find real help</div>
+          <div class="how-step-desc" data-t="step4_desc">When you need a lawyer, Lexa helps you find legal aid and pro-bono resources near you.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── CHAT PANEL ────────────────────────────────────────────── -->
+<div class="app-panel" id="chat-panel">
+  <div class="panel-header">
+    <h2 class="panel-title" data-t="chat_panel_title">Ask Lexa</h2>
+    <button class="panel-back" onclick="showHome()">← <span data-t="back">Back</span></button>
+  </div>
+  <div class="chat-wrap">
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-footer">
+      <div class="chat-disclaimer" data-t="disclaimer">⚠️ Lexa provides general legal information only — not legal advice. For your specific situation, consult a licensed attorney.</div>
+      <div class="starter-prompts" id="starter-prompts"></div>
+      <div class="chat-input-row">
+        <textarea class="chat-textarea" id="chat-input" rows="1" data-t-placeholder="chat_placeholder"></textarea>
+        <button class="chat-send" id="chat-send" onclick="sendMessage()">↑</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SCANNER PANEL ──────────────────────────────────────────── -->
+<div class="app-panel" id="scanner-panel">
+  <div class="panel-header">
+    <h2 class="panel-title" data-t="scan_panel_title">Document Scanner</h2>
+    <button class="panel-back" onclick="showHome()">← <span data-t="back">Back</span></button>
+  </div>
+  <div class="scanner-wrap">
+    <div class="scan-input-box">
+      <h3 data-t="scan_input_title">Paste your document</h3>
+      <p data-t="scan_input_desc">Paste the text of a Terms of Service, contract, or any legal document below.</p>
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="setTab('paste')" data-t="tab_paste">Paste Text</button>
+        <button class="tab-btn" onclick="setTab('url')" data-t="tab_url">Enter URL</button>
+      </div>
+      <div id="tab-paste">
+        <textarea class="scan-textarea" id="scan-text-input" data-t-placeholder="scan_placeholder"></textarea>
+      </div>
+      <div id="tab-url" style="display:none">
+        <input class="scan-url-input" id="scan-url-input" type="url" data-t-placeholder="url_placeholder"/>
+        <p style="font-size:11px;color:var(--ink3);margin-top:6px" data-t="url_note">Note: URL fetching may not work for all sites due to security restrictions.</p>
+      </div>
+      <div class="error-banner" id="scan-error"></div>
+      <button class="scan-btn" id="scan-btn" onclick="runScan()">
+        <span>🔍</span> <span data-t="scan_action">Analyze Document</span>
+      </button>
+    </div>
+
+    <!-- Loading -->
+    <div class="scan-loading" id="scan-loading">
+      <div class="scan-spinner"></div>
+      <p data-t="scanning">Analyzing document…</p>
+      <div class="scan-loading-step" id="scan-step"></div>
+    </div>
+
+    <!-- Results -->
+    <div class="scan-results" id="scan-results">
+      <div class="results-top">
+        <div class="risk-badge-lg">
+          <div class="risk-pill" id="res-risk-pill"></div>
+          <div class="risk-score-num" id="res-score-num"></div>
+        </div>
+        <button class="panel-back" onclick="askAboutDoc()" data-t="ask_about">💬 Ask Lexa about this</button>
+      </div>
+      <div class="risk-bar"><div class="risk-bar-fill" id="res-bar"></div></div>
+      <div class="results-meta" id="res-meta"></div>
+      <div class="verdict-section" id="res-verdict"></div>
+
+      <!-- Compact: top 2 flags -->
+      <div id="res-top-flags"></div>
+
+      <!-- Expand toggle -->
+      <button class="expand-toggle" id="expand-btn" onclick="toggleExpand()">
+        <span id="expand-arrow">▸</span> <span id="expand-label" data-t="full_analysis">Full Analysis</span>
+      </button>
+
+      <!-- Full analysis -->
+      <div class="expandable" id="res-full">
+        <div class="results-cols" id="res-full-content"></div>
+        <div class="benchmark-box" id="res-benchmark"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Le<span>xa</span></div>
+      <div class="footer-sub" data-t="footer_sub">Legal clarity for everyone. Free to use, available in multiple languages.</div>
+    </div>
+    <div style="font-size:12px;color:#555;line-height:2">
+      <div>💬 <span data-t="f_chat">AI Legal Assistant</span></div>
+      <div>🔍 <span data-t="f_scan">Document Scanner</span></div>
+      <div>🔌 <span data-t="f_ext">Browser Extension</span></div>
+    </div>
+  </div>
+  <div class="footer-disclaimer" data-t="footer_disclaimer">
+    Lexa provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.
+  </div>
+</footer>
+
+<script>
+// ─── CONFIG — API calls go to /api/* (Vercel serverless) ──────
+
+// ─── TRANSLATIONS ──────────────────────────────────────────────
+const T = {
+  en: {
+    nav_cta:'Get Help', eyebrow:'Legal Clarity for Everyone',
+    h1_html:'The legal system is <em>complex.</em><br/><strong>You deserve clarity.</strong>',
+    hero_sub:'Lexa helps you understand your legal situation, spot red flags in contracts, and know your next steps — in plain language, for free.',
+    chat_title:'Ask Lexa', chat_desc:'Describe your situation and get clear, factual guidance on your options and next steps.',
+    ex1:'I was in a car accident', ex2:"My landlord won\'t return my deposit",
+    ex3:'I received a court summons', ex4:'I was wrongfully terminated',
+    chat_btn:'Start a conversation →',
+    scan_title:'Scan a Document', scan_desc:"Paste any Terms of Service, contract, or legal document. We\'ll flag the red flags and summarize what you\'re agreeing to.",
+    sex1:'Terms of Service agreements', sex2:'Rental or lease contracts',
+    sex3:'Employment agreements', sex4:'Privacy policies',
+    scan_btn:'Scan a document →',
+    how_title:'How <em>Lexa</em> works',
+    step1_title:'Describe your situation', step1_desc:"Tell Lexa what\'s happening in your own words — no legal jargon needed.",
+    step2_title:'Get clear options', step2_desc:'Lexa explains what your options are, what agencies to contact, and what to document.',
+    step3_title:'Understand your rights', step3_desc:'Know what protections exist and what the realistic path forward looks like.',
+    step4_title:'Find real help', step4_desc:'When you need a lawyer, Lexa helps you find legal aid and pro-bono resources near you.',
+    chat_panel_title:'Ask Lexa', back:'Back',
+    disclaimer:'⚠️ Lexa provides general legal information only — not legal advice. For your specific situation, consult a licensed attorney.',
+    chat_placeholder:'Describe your situation…',
+    scan_panel_title:'Document Scanner',
+    scan_input_title:'Paste your document',
+    scan_input_desc:'Paste the text of a Terms of Service, contract, or any legal document below.',
+    tab_paste:'Paste Text', tab_url:'Enter URL',
+    scan_placeholder:'Paste the full text of the Terms of Service, contract, or legal document here…',
+    url_placeholder:'https://example.com/terms',
+    url_note:'Note: URL fetching may not work for all sites due to security restrictions.',
+    scan_action:'Analyze Document', scanning:'Analyzing document…',
+    ask_about:'💬 Ask Lexa about this',
+    full_analysis:'Full Analysis',
+    footer_sub:'Legal clarity for everyone. Free to use, available in multiple languages.',
+    f_chat:'AI Legal Assistant', f_scan:'Document Scanner', f_ext:'Browser Extension',
+    footer_disclaimer:'Lexa provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.',
+    welcome:"Hi! I\'m Lexa, your legal information assistant. I can help you understand your legal situation, know your rights, and figure out next steps.\n\nWhat\'s going on?",
+    starters:['I was in a car accident',"My landlord won\'t return my deposit",'I received a court summons','I was wrongfully terminated','I need to understand a contract',"I\'m being evicted"],
+  },
+  es: {
+    nav_cta:'Obtener Ayuda', eyebrow:'Claridad Legal para Todos',
+    h1_html:'El sistema legal es <em>complejo.</em><br/><strong>Mereces claridad.</strong>',
+    hero_sub:'Lexa te ayuda a entender tu situación legal, detectar señales de alerta en contratos y conocer tus próximos pasos — en lenguaje simple, gratis.',
+    chat_title:'Pregunta a Lexa', chat_desc:'Describe tu situación y recibe orientación clara y objetiva sobre tus opciones y próximos pasos.',
+    ex1:'Tuve un accidente de auto', ex2:'Mi arrendador no devuelve mi depósito',
+    ex3:'Recibí una citación judicial', ex4:'Fui despedido injustamente',
+    chat_btn:'Iniciar conversación →',
+    scan_title:'Analizar Documento', scan_desc:'Pega cualquier Términos de Servicio, contrato o documento legal. Identificaremos las señales de alerta y resumiremos lo que estás aceptando.',
+    sex1:'Términos y condiciones', sex2:'Contratos de arrendamiento',
+    sex3:'Contratos de empleo', sex4:'Políticas de privacidad',
+    scan_btn:'Analizar documento →',
+    how_title:'Cómo funciona <em>Lexa</em>',
+    step1_title:'Describe tu situación', step1_desc:'Cuéntale a Lexa lo que está pasando en tus propias palabras — sin jerga legal.',
+    step2_title:'Obtén opciones claras', step2_desc:'Lexa explica cuáles son tus opciones, a qué agencias contactar y qué documentar.',
+    step3_title:'Comprende tus derechos', step3_desc:'Conoce qué protecciones existen y cómo es el camino a seguir.',
+    step4_title:'Encuentra ayuda real', step4_desc:'Cuando necesites un abogado, Lexa te ayuda a encontrar asistencia legal y recursos pro bono cerca de ti.',
+    chat_panel_title:'Pregunta a Lexa', back:'Volver',
+    disclaimer:'⚠️ Lexa proporciona información legal general únicamente — no asesoramiento legal. Para tu situación específica, consulta a un abogado autorizado.',
+    chat_placeholder:'Describe tu situación…',
+    scan_panel_title:'Analizador de Documentos',
+    scan_input_title:'Pega tu documento',
+    scan_input_desc:'Pega el texto de un Términos de Servicio, contrato o cualquier documento legal a continuación.',
+    tab_paste:'Pegar Texto', tab_url:'Ingresar URL',
+    scan_placeholder:'Pega aquí el texto completo del documento legal…',
+    url_placeholder:'https://ejemplo.com/terminos',
+    url_note:'Nota: La obtención por URL puede no funcionar en todos los sitios.',
+    scan_action:'Analizar Documento', scanning:'Analizando documento…',
+    ask_about:'💬 Preguntar a Lexa sobre esto',
+    full_analysis:'Análisis Completo',
+    footer_sub:'Claridad legal para todos. Gratis, disponible en varios idiomas.',
+    f_chat:'Asistente Legal IA', f_scan:'Analizador de Documentos', f_ext:'Extensión del Navegador',
+    footer_disclaimer:'Lexa proporciona información legal general solo con fines educativos. Nada en esta plataforma constituye asesoramiento legal.',
+    welcome:'¡Hola! Soy Lexa, tu asistente de información legal. Puedo ayudarte a entender tu situación legal, conocer tus derechos y encontrar los próximos pasos.\n\n¿Qué está pasando?',
+    starters:['Tuve un accidente de auto','Mi arrendador no devuelve mi depósito','Recibí una citación judicial','Fui despedido injustamente','Necesito entender un contrato','Me están desalojando'],
+  },
+  zh: {
+    nav_cta:'获取帮助', eyebrow:'人人都能理解的法律',
+    h1_html:'法律体系<em>复杂难懂。</em><br/><strong>但您值得清晰了解。</strong>',
+    hero_sub:'Lexa帮助您理解法律状况，发现合同中的危险条款，并了解下一步该怎么做——用简单语言，完全免费。',
+    chat_title:'向Lexa提问', chat_desc:'描述您的情况，获得关于您的选择和下一步行动的清晰、客观指导。',
+    ex1:'我发生了车祸', ex2:'房东不归还我的押金',
+    ex3:'我收到了法庭传票', ex4:'我被不公正地解雇了',
+    chat_btn:'开始对话 →',
+    scan_title:'扫描文件', scan_desc:'粘贴任何服务条款、合同或法律文件。我们将标记危险条款并总结您同意的内容。',
+    sex1:'服务条款协议', sex2:'租赁合同',
+    sex3:'劳动合同', sex4:'隐私政策',
+    scan_btn:'扫描文件 →',
+    how_title:'<em>Lexa</em> 如何工作',
+    step1_title:'描述您的情况', step1_desc:'用您自己的话告诉Lexa发生了什么——不需要法律术语。',
+    step2_title:'获取明确选项', step2_desc:'Lexa解释您的选择，应联系哪些机构，以及需要记录什么。',
+    step3_title:'了解您的权利', step3_desc:'了解存在哪些保护措施以及现实的前进路径。',
+    step4_title:'找到真正的帮助', step4_desc:'当您需要律师时，Lexa帮助您找到附近的法律援助和公益法律资源。',
+    chat_panel_title:'向Lexa提问', back:'返回',
+    disclaimer:'⚠️ Lexa仅提供一般法律信息——不是法律建议。对于您的具体情况，请咨询持牌律师。',
+    chat_placeholder:'描述您的情况…',
+    scan_panel_title:'文件分析器',
+    scan_input_title:'粘贴您的文件',
+    scan_input_desc:'在下面粘贴服务条款、合同或任何法律文件的文本。',
+    tab_paste:'粘贴文本', tab_url:'输入网址',
+    scan_placeholder:'在此粘贴完整的法律文件文本…',
+    url_placeholder:'https://example.com/terms',
+    url_note:'注意：由于安全限制，URL获取可能对某些网站不起作用。',
+    scan_action:'分析文件', scanning:'正在分析文件…',
+    ask_about:'💬 向Lexa询问此内容',
+    full_analysis:'完整分析',
+    footer_sub:'人人都能理解的法律。免费使用，支持多种语言。',
+    f_chat:'AI法律助手', f_scan:'文件扫描器', f_ext:'浏览器扩展',
+    footer_disclaimer:'Lexa仅出于教育目的提供一般法律信息。本平台上的任何内容均不构成法律建议。',
+    welcome:'您好！我是Lexa，您的法律信息助手。我可以帮助您了解法律状况、知晓权利并找到下一步行动。\n\n发生了什么？',
+    starters:['我发生了车祸','房东不归还我的押金','我收到了法庭传票','我被不公正地解雇','我需要理解一份合同','我正在被驱逐'],
+  }
+};
+
+// ─── STATE ─────────────────────────────────────────────────────
+let lang = 'en';
+let chatHistory = [];
+let lastScanResult = null;
+let lastScanText = '';
+let scanExpanded = false;
+let activeTab = 'paste';
+
+// ─── LANG ──────────────────────────────────────────────────────
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  applyTranslations();
+}
+function t(key) { return T[lang][key] || T['en'][key] || key; }
+function applyTranslations() {
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.dataset.t;
+    const val = t(key);
+    if (key === 'h1_html' || key === 'how_title') el.innerHTML = val;
+    else el.textContent = val;
+  });
+  document.querySelectorAll('[data-t-placeholder]').forEach(el => {
+    el.placeholder = t(el.dataset.tPlaceholder);
+  });
+  if (document.getElementById('chat-panel').classList.contains('visible')) buildStarters();
+}
+
+// ─── NAVIGATION ────────────────────────────────────────────────
+function showHome() {
+  document.getElementById('home-section').style.display = '';
+  document.getElementById('chat-panel').classList.remove('visible');
+  document.getElementById('scanner-panel').classList.remove('visible');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openChat() {
+  document.getElementById('home-section').style.display = 'none';
+  document.getElementById('scanner-panel').classList.remove('visible');
+  document.getElementById('chat-panel').classList.add('visible');
+  window.scrollTo({top:0,behavior:'smooth'});
+  initChat();
+}
+function openScanner() {
+  document.getElementById('home-section').style.display = 'none';
+  document.getElementById('chat-panel').classList.remove('visible');
+  document.getElementById('scanner-panel').classList.add('visible');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ─── CHAT ──────────────────────────────────────────────────────
+const SYSTEM_PROMPT = {
+  en: `You are Lexa, a warm and knowledgeable legal information assistant. You help everyday people — especially from marginalized communities — understand their legal situations, rights, and options.
+
+RULES:
+- Provide INFORMATION and EDUCATION only, never legal advice
+- Be warm, empathetic, and use plain language — no jargon
+- Start by acknowledging the person's situation with empathy
+- Give clear, actionable next steps: who to call, what to document, what agencies exist
+- For emergencies, direct them to 911 or relevant services immediately
+- Mention that laws vary by state/country when relevant
+- Suggest free legal resources (legal aid, pro bono clinics) when appropriate
+- Use bullet points for action steps to keep things readable
+- Respond in English
+- End responses by asking if they have follow-up questions`,
+  es: `Eres Lexa, una asistente de información legal cálida y experta. Ayudas a personas comunes — especialmente de comunidades marginadas — a entender sus situaciones legales, derechos y opciones.
+
+REGLAS:
+- Proporciona INFORMACIÓN y EDUCACIÓN únicamente, nunca asesoramiento legal
+- Sé cálida, empática y usa lenguaje simple — sin jerga
+- Comienza reconociendo la situación de la persona con empatía
+- Da pasos claros y concretos: a quién llamar, qué documentar, qué agencias existen
+- Para emergencias, dirígelos al 911 o servicios relevantes inmediatamente
+- Menciona que las leyes varían por estado/país cuando sea relevante
+- Sugiere recursos legales gratuitos cuando sea apropiado
+- Usa viñetas para los pasos de acción
+- Responde en español`,
+  zh: `你是Lexa，一个温暖且知识渊博的法律信息助手。你帮助普通人——尤其是边缘化社区的人——了解他们的法律状况、权利和选择。
+
+规则：
+- 只提供信息和教育，绝不提供法律建议
+- 态度温和、富有同情心，使用简单语言——不用术语
+- 先以同理心承认对方的处境
+- 给出清晰、可操作的下一步：联系谁、记录什么、相关机构
+- 紧急情况下立即指导拨打110或相关服务
+- 适当时提及法律因地区而异
+- 适当时推荐免费法律援助资源
+- 用要点列出行动步骤
+- 用中文回复`
+};
+
+function initChat() {
+  const msgs = document.getElementById('chat-messages');
+  if (msgs.children.length > 0) return;
+  chatHistory = [];
+  appendMsg('agent', t('welcome'));
+  buildStarters();
+}
+
+function buildStarters() {
+  const el = document.getElementById('starter-prompts');
+  if (chatHistory.length > 0) { el.innerHTML = ''; return; }
+  const starters = T[lang].starters || T.en.starters;
+  el.innerHTML = starters.map(s =>
+    `<button class="starter-chip" onclick="useStarter(this.dataset.v)" data-v="${s}">${s}</button>`
+  ).join('');
+}
+
+function useStarter(text) {
+  document.getElementById('chat-input').value = text;
+  sendMessage();
+}
+
+function appendMsg(role, text) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.innerHTML = `<div class="msg-avatar">${role==='agent'?'⚖':'👤'}</div><div class="msg-bubble">${formatMsgText(text)}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function formatMsgText(text) {
+  let html = text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br/>');
+  html = html.replace(/(^|<br\/>)[-•]\s+(.+?)(?=<br\/>|<\/p>|$)/g,'$1<ul><li>$2</li></ul>');
+  return '<p>' + html + '</p>';
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg agent'; div.id = 'typing-indicator';
+  div.innerHTML = `<div class="msg-avatar">⚖</div><div class="msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() { const e = document.getElementById('typing-indicator'); if(e) e.remove(); }
+
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = ''; input.style.height = 'auto';
+  document.getElementById('starter-prompts').innerHTML = '';
+  appendMsg('user', text);
+  chatHistory.push({ role: 'user', content: text });
+  document.getElementById('chat-send').disabled = true;
+  showTyping();
+
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: chatHistory.slice(-12),
+        lang
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(()=>({}));
+      throw new Error(err.error || `Server error ${response.status}`);
+    }
+    const data = await response.json();
+    const reply = data.reply;
+    chatHistory.push({ role: 'assistant', content: reply });
+    removeTyping();
+    appendMsg('agent', reply);
+  } catch(e) {
+    removeTyping();
+    console.error('Chat error:', e);
+    appendMsg('agent', 'Something went wrong: ' + e.message + '. Please try again.');
+  } finally {
+    document.getElementById('chat-send').disabled = false;
+  }
+}
+
+document.getElementById('chat-input').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+document.getElementById('chat-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+// ─── SCANNER ───────────────────────────────────────────────────
+function setTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&tab==='paste')||(i===1&&tab==='url')));
+  document.getElementById('tab-paste').style.display = tab==='paste' ? '' : 'none';
+  document.getElementById('tab-url').style.display = tab==='url' ? '' : 'none';
+}
+
+const SCAN_STEPS = {
+  en:['Reading document…','Extracting clauses…','Comparing against benchmarks…','Identifying red flags…','Preparing summary…'],
+  es:['Leyendo documento…','Extrayendo cláusulas…','Comparando con referencias…','Identificando señales de alerta…','Preparando resumen…'],
+  zh:['正在读取文件…','提取条款…','与基准比较…','识别危险条款…','准备摘要…']
+};
+let scanStepInterval;
+
+async function runScan() {
+  const text = activeTab === 'paste'
+    ? document.getElementById('scan-text-input').value.trim()
+    : document.getElementById('scan-url-input').value.trim();
+
+  const errEl = document.getElementById('scan-error');
+  errEl.classList.remove('visible');
+
+  if (!text || text.length < 80) {
+    errEl.textContent = lang==='es' ? 'Por favor pega el texto del documento.' : lang==='zh' ? '请粘贴文件文本。' : 'Please paste the document text first (minimum 80 characters).';
+    errEl.classList.add('visible'); return;
+  }
+
+  document.getElementById('scan-btn').disabled = true;
+  document.getElementById('scan-results').classList.remove('visible');
+  document.getElementById('scan-loading').classList.add('visible');
+
+  const steps = SCAN_STEPS[lang] || SCAN_STEPS.en;
+  let si = 0;
+  const stepEl = document.getElementById('scan-step');
+  stepEl.textContent = steps[0];
+  scanStepInterval = setInterval(() => { si=(si+1)%steps.length; stepEl.textContent=steps[si]; }, 1400);
+
+  const prompt = `You are a legal expert analyzing Terms of Service and Privacy Policies to protect everyday users. Analyze the following text and respond with ONLY valid JSON — no markdown, no explanation outside the JSON.
+
+Required JSON structure:
+{
+  "riskScore": <0-100, higher = more dangerous>,
+  "riskLevel": "<LOW | MEDIUM | HIGH | CRITICAL>",
+  "redFlags": [<up to 6 strings, each a specific concerning clause>],
+  "summary": [<5-7 plain English bullet strings of what the user is agreeing to>],
+  "dataCollection": "<Minimal | Standard | Extensive | Invasive>",
+  "userRights": "<Strong | Moderate | Limited | Very Limited>",
+  "verdict": "<2 plain-language sentences for a regular person>",
+  "comparedToBenchmark": "<1 sentence comparing to typical/acceptable ToS>"
+}
+
+Respond in ${lang === 'es' ? 'Spanish' : lang === 'zh' ? 'Chinese (Simplified)' : 'English'} for all text fields except the JSON keys.
+
+Document to analyze:
+---
+${text.slice(0, 9000)}
+---`;
+
+  try {
+    const response = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, lang })
+    });
+
+    clearInterval(scanStepInterval);
+
+    if (!response.ok) {
+      const err = await response.json().catch(()=>({}));
+      throw new Error(err.error || `Server error ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (!data.success) throw new Error(data.error || 'Analysis failed');
+    const result = data.result;
+    lastScanResult = result;
+    lastScanText = text;
+    renderScanResults(result);
+
+  } catch(e) {
+    clearInterval(scanStepInterval);
+    document.getElementById('scan-loading').classList.remove('visible');
+    errEl.textContent = 'Error: ' + (e.message || 'Analysis failed. Please try again.');
+    errEl.classList.add('visible');
+  } finally {
+    document.getElementById('scan-btn').disabled = false;
+  }
+}
+
+function renderScanResults(r) {
+  document.getElementById('scan-loading').classList.remove('visible');
+  const riskClass = r.riskLevel || 'MEDIUM';
+  const score = Math.min(100, Math.max(0, r.riskScore || 50));
+
+  document.getElementById('res-risk-pill').className = `risk-pill ${riskClass}`;
+  document.getElementById('res-risk-pill').textContent = riskClass;
+  document.getElementById('res-score-num').textContent = `${score}/100`;
+  document.getElementById('res-bar').className = `risk-bar-fill ${riskClass}`;
+  document.getElementById('res-bar').style.width = '0%';
+
+  const dataColor = {Minimal:'var(--green)',Standard:'var(--amber)',Extensive:'var(--red)',Invasive:'#8b0000'};
+  const rightsColor = {Strong:'var(--green)',Moderate:'var(--amber)',Limited:'var(--red)','Very Limited':'#8b0000'};
+  const dcLabel = lang==='zh'?'数据收集':lang==='es'?'Recopilación de datos':'Data Collection';
+  const urLabel = lang==='zh'?'您的权利':lang==='es'?'Tus Derechos':'Your Rights';
+
+  document.getElementById('res-meta').innerHTML = `
+    <div class="meta-card"><div class="meta-card-label">${dcLabel}</div><div class="meta-card-val" style="color:${dataColor[r.dataCollection]||'var(--ink)'}">${r.dataCollection||'—'}</div></div>
+    <div class="meta-card"><div class="meta-card-label">${urLabel}</div><div class="meta-card-val" style="color:${rightsColor[r.userRights]||'var(--ink)'}">${r.userRights||'—'}</div></div>`;
+
+  const verdictLabel = lang==='zh'?'结论':lang==='es'?'Veredicto':'Verdict';
+  document.getElementById('res-verdict').innerHTML = `<strong>${verdictLabel}</strong>${escHtml(r.verdict||'')}`;
+
+  const topFlags = (r.redFlags||[]).slice(0,2);
+  const remaining = Math.max(0,(r.redFlags||[]).length - 2);
+  const rfLabel = lang==='zh'?'主要危险条款':lang==='es'?'Principales Señales de Alerta':'Top Red Flags';
+  document.getElementById('res-top-flags').innerHTML = topFlags.length > 0 ? `
+    <div style="margin-bottom:12px">
+      <div class="results-col-title">⚠️ ${rfLabel}</div>
+      ${topFlags.map(f=>`<div class="flag-item"><span class="flag-item-icon">⚠️</span><span>${escHtml(f)}</span></div>`).join('')}
+    </div>` : '';
+
+  document.getElementById('expand-label').textContent = remaining > 0
+    ? `${t('full_analysis')} · ${remaining} more flag${remaining>1?'s':''}`
+    : t('full_analysis');
+
+  const noFlagMsg = lang==='zh'?'未发现重大危险条款':lang==='es'?'No se detectaron señales de alerta importantes':'No major red flags detected.';
+  const allFlagsHtml = (r.redFlags||[]).length > 0
+    ? (r.redFlags||[]).map(f=>`<div class="flag-item"><span class="flag-item-icon">⚠️</span><span>${escHtml(f)}</span></div>`).join('')
+    : `<div class="summary-item"><span class="summary-dot">●</span><span>${noFlagMsg}</span></div>`;
+  const summaryHtml = (r.summary||[]).map(s=>`<div class="summary-item"><span class="summary-dot">●</span><span>${escHtml(s)}</span></div>`).join('');
+  const allRfLabel = lang==='zh'?'所有危险条款':lang==='es'?'Todas las Señales de Alerta':'All Red Flags';
+  const agreeLabel = lang==='zh'?'您同意的内容':lang==='es'?'A qué estás de acuerdo':"What You're Agreeing To";
+
+  document.getElementById('res-full-content').innerHTML = `
+    <div><div class="results-col-title">⚠️ ${allRfLabel} (${(r.redFlags||[]).length})</div>${allFlagsHtml}</div>
+    <div><div class="results-col-title">📋 ${agreeLabel}</div>${summaryHtml}</div>`;
+  document.getElementById('res-benchmark').textContent = r.comparedToBenchmark || '';
+
+  scanExpanded = false;
+  document.getElementById('expand-arrow').textContent = '▸';
+  document.getElementById('res-full').classList.remove('open');
+  document.getElementById('scan-results').classList.add('visible');
+  setTimeout(() => { document.getElementById('res-bar').style.width = score + '%'; }, 100);
+  document.getElementById('scan-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function toggleExpand() {
+  scanExpanded = !scanExpanded;
+  document.getElementById('res-full').classList.toggle('open', scanExpanded);
+  document.getElementById('expand-arrow').textContent = scanExpanded ? '▾' : '▸';
+  const remaining = Math.max(0,(lastScanResult?.redFlags||[]).length - 2);
+  const hideLabel = lang==='zh'?'收起':lang==='es'?'Cerrar':'Hide Full Analysis';
+  document.getElementById('expand-label').textContent = scanExpanded
+    ? hideLabel
+    : (remaining > 0 ? `${t('full_analysis')} · ${remaining} more flag${remaining>1?'s':''}` : t('full_analysis'));
+}
+
+function askAboutDoc() {
+  openChat();
+  if (lastScanText) {
+    const intro = lang==='zh' ? `我刚刚扫描了这份文件，我有问题：\n\n${lastScanText.slice(0,1500)}`
+      : lang==='es' ? `Acabo de escanear este documento y tengo preguntas:\n\n${lastScanText.slice(0,1500)}`
+      : `I just scanned this document and have questions about it:\n\n${lastScanText.slice(0,1500)}`;
+    document.getElementById('chat-input').value = intro;
+  }
+}
+
+function escHtml(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ─── SETTINGS ──────────────────────────────────────────────────
+function openSettings() {
+  alert('Lexa is powered by a secure server — no API key needed!');
+}
+
+// ─── INIT ──────────────────────────────────────────────────────
+applyTranslations();
+</script>
+
+</body>
+</html>
