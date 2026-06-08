@@ -1012,15 +1012,12 @@ async function sendMessage() {
     const response = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        messages: chatHistory.slice(-12),
-        lang
-      })
+      body: JSON.stringify({ messages: chatHistory.slice(-12), lang })
     });
 
     if (!response.ok) {
       const err = await response.json().catch(()=>({}));
-      throw new Error(err.error || `Server error ${response.status}`);
+      throw new Error(err.error || 'Server error ' + response.status);
     }
     const data = await response.json();
     const reply = data.reply;
@@ -1114,7 +1111,7 @@ ${text.slice(0, 9000)}
 
     if (!response.ok) {
       const err = await response.json().catch(()=>({}));
-      throw new Error(err.error || `Server error ${response.status}`);
+      throw new Error(err.error || 'Server error ' + response.status);
     }
 
     const data = await response.json();
@@ -1224,6 +1221,5 @@ function openSettings() {
 // ─── INIT ──────────────────────────────────────────────────────
 applyTranslations();
 </script>
-
 </body>
 </html>
