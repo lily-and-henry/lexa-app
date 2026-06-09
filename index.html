@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Lexa — Legal Clarity for Everyone</title>
+<title>Para — Legal Clarity for Everyone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
@@ -570,7 +570,7 @@ footer{
     <div>
       <div class="hero-eyebrow" data-t="eyebrow">Legal Clarity for Everyone</div>
       <h1 data-t="h1_html">The legal system is <em>complex.</em><br/><strong>You deserve clarity.</strong></h1>
-      <p class="hero-sub" data-t="hero_sub">Lexa helps you understand your legal situation, spot red flags in contracts, and know your next steps — in plain language, for free.</p>
+      <p class="hero-sub" data-t="hero_sub">Para helps you understand your legal situation, spot red flags in contracts, and know your next steps — in plain language, for free.</p>
       <div class="hero-langs">
         <span style="font-size:12px;color:var(--ink3);font-weight:500;">Available in:</span>
         <span class="hero-lang-tag">🇺🇸 English</span>
@@ -585,7 +585,7 @@ footer{
   <div class="entry-grid fade-up visible">
     <div class="entry-card chat-card" onclick="openChat()">
       <div class="card-icon">💬</div>
-      <div class="card-title" data-t="chat_title">Ask Lexa</div>
+      <div class="card-title" data-t="chat_title">Ask Para</div>
       <div class="card-desc" data-t="chat_desc">Describe your situation and get clear, factual guidance on your options and next steps.</div>
       <div class="card-examples">
         <div class="card-example" data-t="ex1">I was in a car accident</div>
@@ -613,17 +613,17 @@ footer{
   <!-- How It Works -->
   <div class="how-section">
     <div class="how-inner">
-      <h2 class="how-title" data-t="how_title">How <em>Lexa</em> works</h2>
+      <h2 class="how-title" data-t="how_title">How <em>Para</em> works</h2>
       <div class="how-grid">
         <div class="how-step">
           <div class="how-num">01</div>
           <div class="how-step-title" data-t="step1_title">Describe your situation</div>
-          <div class="how-step-desc" data-t="step1_desc">Tell Lexa what's happening in your own words — no legal jargon needed.</div>
+          <div class="how-step-desc" data-t="step1_desc">Tell Para what's happening in your own words — no legal jargon needed.</div>
         </div>
         <div class="how-step">
           <div class="how-num">02</div>
           <div class="how-step-title" data-t="step2_title">Get clear options</div>
-          <div class="how-step-desc" data-t="step2_desc">Lexa explains what your options are, what agencies to contact, and what to document.</div>
+          <div class="how-step-desc" data-t="step2_desc">Para explains what your options are, what agencies to contact, and what to document.</div>
         </div>
         <div class="how-step">
           <div class="how-num">03</div>
@@ -633,7 +633,7 @@ footer{
         <div class="how-step">
           <div class="how-num">04</div>
           <div class="how-step-title" data-t="step4_title">Find real help</div>
-          <div class="how-step-desc" data-t="step4_desc">When you need a lawyer, Lexa helps you find legal aid and pro-bono resources near you.</div>
+          <div class="how-step-desc" data-t="step4_desc">When you need a lawyer, Para helps you find legal aid and pro-bono resources near you.</div>
         </div>
       </div>
     </div>
@@ -644,13 +644,13 @@ footer{
 <!-- ── CHAT PANEL ────────────────────────────────────────────── -->
 <div class="app-panel" id="chat-panel">
   <div class="panel-header">
-    <h2 class="panel-title" data-t="chat_panel_title">Ask Lexa</h2>
+    <h2 class="panel-title" data-t="chat_panel_title">Ask Para</h2>
     <button class="panel-back" onclick="showHome()">← <span data-t="back">Back</span></button>
   </div>
   <div class="chat-wrap">
     <div class="chat-messages" id="chat-messages"></div>
     <div class="chat-footer">
-      <div class="chat-disclaimer" data-t="disclaimer">⚠️ Lexa provides general legal information only — not legal advice. For your specific situation, consult a licensed attorney.</div>
+      <div class="chat-disclaimer" data-t="disclaimer">⚠️ Para provides general legal information only — not legal advice. For your specific situation, consult a licensed attorney.</div>
       <div class="starter-prompts" id="starter-prompts"></div>
       <div class="chat-input-row">
         <textarea class="chat-textarea" id="chat-input" rows="1" data-t-placeholder="chat_placeholder"></textarea>
@@ -701,7 +701,7 @@ footer{
           <div class="risk-pill" id="res-risk-pill"></div>
           <div class="risk-score-num" id="res-score-num"></div>
         </div>
-        <button class="panel-back" onclick="askAboutDoc()" data-t="ask_about">💬 Ask Lexa about this</button>
+        <button class="panel-back" onclick="askAboutDoc()" data-t="ask_about">💬 Ask Para about this</button>
       </div>
       <div class="risk-bar"><div class="risk-bar-fill" id="res-bar"></div></div>
       <div class="results-meta" id="res-meta"></div>
@@ -738,7 +738,7 @@ footer{
     </div>
   </div>
   <div class="footer-disclaimer" data-t="footer_disclaimer">
-    Lexa provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.
+    Para provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.
   </div>
 </footer>
 
@@ -750,8 +750,8 @@ const T = {
   en: {
     nav_cta:'Get Help', eyebrow:'Legal Clarity for Everyone',
     h1_html:'The legal system is <em>complex.</em><br/><strong>You deserve clarity.</strong>',
-    hero_sub:'Lexa helps you understand your legal situation, spot red flags in contracts, and know your next steps — in plain language, for free.',
-    chat_title:'Ask Lexa', chat_desc:'Describe your situation and get clear, factual guidance on your options and next steps.',
+    hero_sub:'Para helps you understand your legal situation, spot red flags in contracts, and know your next steps — in plain language, for free.',
+    chat_title:'Ask Para', chat_desc:'Describe your situation and get clear, factual guidance on your options and next steps.',
     ex1:'I was in a car accident', ex2:"My landlord won\'t return my deposit",
     ex3:'I received a court summons', ex4:'I was wrongfully terminated',
     chat_btn:'Start a conversation →',
@@ -759,13 +759,13 @@ const T = {
     sex1:'Terms of Service agreements', sex2:'Rental or lease contracts',
     sex3:'Employment agreements', sex4:'Privacy policies',
     scan_btn:'Scan a document →',
-    how_title:'How <em>Lexa</em> works',
-    step1_title:'Describe your situation', step1_desc:"Tell Lexa what\'s happening in your own words — no legal jargon needed.",
-    step2_title:'Get clear options', step2_desc:'Lexa explains what your options are, what agencies to contact, and what to document.',
+    how_title:'How <em>Para</em> works',
+    step1_title:'Describe your situation', step1_desc:"Tell Para what\'s happening in your own words — no legal jargon needed.",
+    step2_title:'Get clear options', step2_desc:'Para explains what your options are, what agencies to contact, and what to document.',
     step3_title:'Understand your rights', step3_desc:'Know what protections exist and what the realistic path forward looks like.',
-    step4_title:'Find real help', step4_desc:'When you need a lawyer, Lexa helps you find legal aid and pro-bono resources near you.',
-    chat_panel_title:'Ask Lexa', back:'Back',
-    disclaimer:'⚠️ Lexa provides general legal information only — not legal advice. For your specific situation, consult a licensed attorney.',
+    step4_title:'Find real help', step4_desc:'When you need a lawyer, Para helps you find legal aid and pro-bono resources near you.',
+    chat_panel_title:'Ask Para', back:'Back',
+    disclaimer:'⚠️ Para provides general legal information only — not legal advice. For your specific situation, consult a licensed attorney.',
     chat_placeholder:'Describe your situation…',
     scan_panel_title:'Document Scanner',
     scan_input_title:'Paste your document',
@@ -775,19 +775,19 @@ const T = {
     url_placeholder:'https://example.com/terms',
     url_note:'Note: URL fetching may not work for all sites due to security restrictions.',
     scan_action:'Analyze Document', scanning:'Analyzing document…',
-    ask_about:'💬 Ask Lexa about this',
+    ask_about:'💬 Ask Para about this',
     full_analysis:'Full Analysis',
     footer_sub:'Legal clarity for everyone. Free to use, available in multiple languages.',
     f_chat:'AI Legal Assistant', f_scan:'Document Scanner', f_ext:'Browser Extension',
-    footer_disclaimer:'Lexa provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.',
-    welcome:"Hi! I\'m Lexa, your legal information assistant. I can help you understand your legal situation, know your rights, and figure out next steps.\n\nWhat\'s going on?",
+    footer_disclaimer:'Para provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.',
+    welcome:"Hi! I\'m Para, your legal information assistant. I can help you understand your legal situation, know your rights, and figure out next steps.\n\nWhat\'s going on?",
     starters:['I was in a car accident',"My landlord won\'t return my deposit",'I received a court summons','I was wrongfully terminated','I need to understand a contract',"I\'m being evicted"],
   },
   es: {
     nav_cta:'Obtener Ayuda', eyebrow:'Claridad Legal para Todos',
     h1_html:'El sistema legal es <em>complejo.</em><br/><strong>Mereces claridad.</strong>',
-    hero_sub:'Lexa te ayuda a entender tu situación legal, detectar señales de alerta en contratos y conocer tus próximos pasos — en lenguaje simple, gratis.',
-    chat_title:'Pregunta a Lexa', chat_desc:'Describe tu situación y recibe orientación clara y objetiva sobre tus opciones y próximos pasos.',
+    hero_sub:'Para te ayuda a entender tu situación legal, detectar señales de alerta en contratos y conocer tus próximos pasos — en lenguaje simple, gratis.',
+    chat_title:'Pregunta a Para', chat_desc:'Describe tu situación y recibe orientación clara y objetiva sobre tus opciones y próximos pasos.',
     ex1:'Tuve un accidente de auto', ex2:'Mi arrendador no devuelve mi depósito',
     ex3:'Recibí una citación judicial', ex4:'Fui despedido injustamente',
     chat_btn:'Iniciar conversación →',
@@ -795,13 +795,13 @@ const T = {
     sex1:'Términos y condiciones', sex2:'Contratos de arrendamiento',
     sex3:'Contratos de empleo', sex4:'Políticas de privacidad',
     scan_btn:'Analizar documento →',
-    how_title:'Cómo funciona <em>Lexa</em>',
-    step1_title:'Describe tu situación', step1_desc:'Cuéntale a Lexa lo que está pasando en tus propias palabras — sin jerga legal.',
-    step2_title:'Obtén opciones claras', step2_desc:'Lexa explica cuáles son tus opciones, a qué agencias contactar y qué documentar.',
+    how_title:'Cómo funciona <em>Para</em>',
+    step1_title:'Describe tu situación', step1_desc:'Cuéntale a Para lo que está pasando en tus propias palabras — sin jerga legal.',
+    step2_title:'Obtén opciones claras', step2_desc:'Para explica cuáles son tus opciones, a qué agencias contactar y qué documentar.',
     step3_title:'Comprende tus derechos', step3_desc:'Conoce qué protecciones existen y cómo es el camino a seguir.',
-    step4_title:'Encuentra ayuda real', step4_desc:'Cuando necesites un abogado, Lexa te ayuda a encontrar asistencia legal y recursos pro bono cerca de ti.',
-    chat_panel_title:'Pregunta a Lexa', back:'Volver',
-    disclaimer:'⚠️ Lexa proporciona información legal general únicamente — no asesoramiento legal. Para tu situación específica, consulta a un abogado autorizado.',
+    step4_title:'Encuentra ayuda real', step4_desc:'Cuando necesites un abogado, Para te ayuda a encontrar asistencia legal y recursos pro bono cerca de ti.',
+    chat_panel_title:'Pregunta a Para', back:'Volver',
+    disclaimer:'⚠️ Para proporciona información legal general únicamente — no asesoramiento legal. Para tu situación específica, consulta a un abogado autorizado.',
     chat_placeholder:'Describe tu situación…',
     scan_panel_title:'Analizador de Documentos',
     scan_input_title:'Pega tu documento',
@@ -811,19 +811,19 @@ const T = {
     url_placeholder:'https://ejemplo.com/terminos',
     url_note:'Nota: La obtención por URL puede no funcionar en todos los sitios.',
     scan_action:'Analizar Documento', scanning:'Analizando documento…',
-    ask_about:'💬 Preguntar a Lexa sobre esto',
+    ask_about:'💬 Preguntar a Para sobre esto',
     full_analysis:'Análisis Completo',
     footer_sub:'Claridad legal para todos. Gratis, disponible en varios idiomas.',
     f_chat:'Asistente Legal IA', f_scan:'Analizador de Documentos', f_ext:'Extensión del Navegador',
-    footer_disclaimer:'Lexa proporciona información legal general solo con fines educativos. Nada en esta plataforma constituye asesoramiento legal.',
-    welcome:'¡Hola! Soy Lexa, tu asistente de información legal. Puedo ayudarte a entender tu situación legal, conocer tus derechos y encontrar los próximos pasos.\n\n¿Qué está pasando?',
+    footer_disclaimer:'Para proporciona información legal general solo con fines educativos. Nada en esta plataforma constituye asesoramiento legal.',
+    welcome:'¡Hola! Soy Para, tu asistente de información legal. Puedo ayudarte a entender tu situación legal, conocer tus derechos y encontrar los próximos pasos.\n\n¿Qué está pasando?',
     starters:['Tuve un accidente de auto','Mi arrendador no devuelve mi depósito','Recibí una citación judicial','Fui despedido injustamente','Necesito entender un contrato','Me están desalojando'],
   },
   zh: {
     nav_cta:'获取帮助', eyebrow:'人人都能理解的法律',
     h1_html:'法律体系<em>复杂难懂。</em><br/><strong>但您值得清晰了解。</strong>',
-    hero_sub:'Lexa帮助您理解法律状况，发现合同中的危险条款，并了解下一步该怎么做——用简单语言，完全免费。',
-    chat_title:'向Lexa提问', chat_desc:'描述您的情况，获得关于您的选择和下一步行动的清晰、客观指导。',
+    hero_sub:'Para帮助您理解法律状况，发现合同中的危险条款，并了解下一步该怎么做——用简单语言，完全免费。',
+    chat_title:'向Para提问', chat_desc:'描述您的情况，获得关于您的选择和下一步行动的清晰、客观指导。',
     ex1:'我发生了车祸', ex2:'房东不归还我的押金',
     ex3:'我收到了法庭传票', ex4:'我被不公正地解雇了',
     chat_btn:'开始对话 →',
@@ -831,13 +831,13 @@ const T = {
     sex1:'服务条款协议', sex2:'租赁合同',
     sex3:'劳动合同', sex4:'隐私政策',
     scan_btn:'扫描文件 →',
-    how_title:'<em>Lexa</em> 如何工作',
-    step1_title:'描述您的情况', step1_desc:'用您自己的话告诉Lexa发生了什么——不需要法律术语。',
-    step2_title:'获取明确选项', step2_desc:'Lexa解释您的选择，应联系哪些机构，以及需要记录什么。',
+    how_title:'<em>Para</em> 如何工作',
+    step1_title:'描述您的情况', step1_desc:'用您自己的话告诉Para发生了什么——不需要法律术语。',
+    step2_title:'获取明确选项', step2_desc:'Para解释您的选择，应联系哪些机构，以及需要记录什么。',
     step3_title:'了解您的权利', step3_desc:'了解存在哪些保护措施以及现实的前进路径。',
-    step4_title:'找到真正的帮助', step4_desc:'当您需要律师时，Lexa帮助您找到附近的法律援助和公益法律资源。',
-    chat_panel_title:'向Lexa提问', back:'返回',
-    disclaimer:'⚠️ Lexa仅提供一般法律信息——不是法律建议。对于您的具体情况，请咨询持牌律师。',
+    step4_title:'找到真正的帮助', step4_desc:'当您需要律师时，Para帮助您找到附近的法律援助和公益法律资源。',
+    chat_panel_title:'向Para提问', back:'返回',
+    disclaimer:'⚠️ Para仅提供一般法律信息——不是法律建议。对于您的具体情况，请咨询持牌律师。',
     chat_placeholder:'描述您的情况…',
     scan_panel_title:'文件分析器',
     scan_input_title:'粘贴您的文件',
@@ -847,12 +847,12 @@ const T = {
     url_placeholder:'https://example.com/terms',
     url_note:'注意：由于安全限制，URL获取可能对某些网站不起作用。',
     scan_action:'分析文件', scanning:'正在分析文件…',
-    ask_about:'💬 向Lexa询问此内容',
+    ask_about:'💬 向Para询问此内容',
     full_analysis:'完整分析',
     footer_sub:'人人都能理解的法律。免费使用，支持多种语言。',
     f_chat:'AI法律助手', f_scan:'文件扫描器', f_ext:'浏览器扩展',
-    footer_disclaimer:'Lexa仅出于教育目的提供一般法律信息。本平台上的任何内容均不构成法律建议。',
-    welcome:'您好！我是Lexa，您的法律信息助手。我可以帮助您了解法律状况、知晓权利并找到下一步行动。\n\n发生了什么？',
+    footer_disclaimer:'Para仅出于教育目的提供一般法律信息。本平台上的任何内容均不构成法律建议。',
+    welcome:'您好！我是Para，您的法律信息助手。我可以帮助您了解法律状况、知晓权利并找到下一步行动。\n\n发生了什么？',
     starters:['我发生了车祸','房东不归还我的押金','我收到了法庭传票','我被不公正地解雇','我需要理解一份合同','我正在被驱逐'],
   }
 };
@@ -908,7 +908,7 @@ function openScanner() {
 
 // ─── CHAT ──────────────────────────────────────────────────────
 const SYSTEM_PROMPT = {
-  en: `You are Lexa, a warm and knowledgeable legal information assistant. You help everyday people — especially from marginalized communities — understand their legal situations, rights, and options.
+  en: `You are Para, a warm and knowledgeable legal information assistant. You help everyday people — especially from marginalized communities — understand their legal situations, rights, and options.
 
 RULES:
 - Provide INFORMATION and EDUCATION only, never legal advice
@@ -921,7 +921,7 @@ RULES:
 - Use bullet points for action steps to keep things readable
 - Respond in English
 - End responses by asking if they have follow-up questions`,
-  es: `Eres Lexa, una asistente de información legal cálida y experta. Ayudas a personas comunes — especialmente de comunidades marginadas — a entender sus situaciones legales, derechos y opciones.
+  es: `Eres Para, una asistente de información legal cálida y experta. Ayudas a personas comunes — especialmente de comunidades marginadas — a entender sus situaciones legales, derechos y opciones.
 
 REGLAS:
 - Proporciona INFORMACIÓN y EDUCACIÓN únicamente, nunca asesoramiento legal
@@ -933,7 +933,7 @@ REGLAS:
 - Sugiere recursos legales gratuitos cuando sea apropiado
 - Usa viñetas para los pasos de acción
 - Responde en español`,
-  zh: `你是Lexa，一个温暖且知识渊博的法律信息助手。你帮助普通人——尤其是边缘化社区的人——了解他们的法律状况、权利和选择。
+  zh: `你是Para，一个温暖且知识渊博的法律信息助手。你帮助普通人——尤其是边缘化社区的人——了解他们的法律状况、权利和选择。
 
 规则：
 - 只提供信息和教育，绝不提供法律建议
@@ -1215,7 +1215,7 @@ function escHtml(s) {
 
 // ─── SETTINGS ──────────────────────────────────────────────────
 function openSettings() {
-  alert('Lexa is powered by a secure server — no API key needed!');
+  alert('Para is powered by a secure server — no API key needed!');
 }
 
 // ─── INIT ──────────────────────────────────────────────────────
