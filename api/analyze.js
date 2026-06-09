@@ -1,4 +1,4 @@
-// Lexa — Document Analysis Proxy
+// Para — Document Analysis Proxy
 // Your Anthropic key stays here, never exposed to users
 
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
