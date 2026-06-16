@@ -615,15 +615,15 @@ footer{
 
     <div class="entry-card ext-card">
       <div class="card-icon">🔌</div>
-      <div class="card-title">Browser Extension</div>
-      <div class="card-desc">Install the Para extension for Chrome and get automatic ToS scanning on any website — no copy-pasting required.</div>
+      <div class="card-title" data-t="ext_title">Browser Extension</div>
+      <div class="card-desc" data-t="ext_desc">Install the Para extension for Chrome and get automatic ToS scanning on any website — no copy-pasting required.</div>
       <div class="card-examples">
-        <div class="card-example">Auto-detects Terms of Service pages</div>
-        <div class="card-example">Scans in the background silently</div>
-        <div class="card-example">Works on Chrome, Brave, Edge, Arc</div>
-        <div class="card-example">One click to see a full analysis</div>
+        <div class="card-example" data-t="eex1">Auto-detects Terms of Service pages</div>
+        <div class="card-example" data-t="eex2">Scans in the background silently</div>
+        <div class="card-example" data-t="eex3">Works on Chrome, Brave, Edge, Arc</div>
+        <div class="card-example" data-t="eex4">One click to see a full analysis</div>
       </div>
-      <button class="card-btn" onclick="showExtModal()">Download Extension →</button>
+      <button class="card-btn" data-t="ext_btn" onclick="showExtModal()">Download Extension →</button>
     </div>
   </div>
 
@@ -796,6 +796,10 @@ const T = {
     full_analysis:'Full Analysis',
     footer_sub:'Legal clarity for everyone. Free to use, available in multiple languages.',
     f_chat:'AI Legal Assistant', f_scan:'Document Scanner', f_ext:'Browser Extension',
+    ext_title:'Browser Extension', ext_btn:'Download Extension →',
+    ext_desc:'Install the Para extension for Chrome and get automatic ToS scanning on any website — no copy-pasting required.',
+    eex1:'Auto-detects Terms of Service pages', eex2:'Scans in the background silently',
+    eex3:'Works on Chrome, Brave, Edge, Arc', eex4:'One click to see a full analysis',
     footer_disclaimer:'Para provides general legal information for educational purposes only. Nothing on this platform constitutes legal advice, and no attorney-client relationship is formed by using this service. For advice specific to your situation, consult a licensed attorney in your jurisdiction.',
     welcome:"Hi! I\'m Para, your legal information assistant. I can help you understand your legal situation, know your rights, and figure out next steps.\n\nWhat\'s going on?",
     starters:['I was in a car accident',"My landlord won\'t return my deposit",'I received a court summons','I was wrongfully terminated','I need to understand a contract',"I\'m being evicted"],
@@ -832,6 +836,10 @@ const T = {
     full_analysis:'Análisis Completo',
     footer_sub:'Claridad legal para todos. Gratis, disponible en varios idiomas.',
     f_chat:'Asistente Legal IA', f_scan:'Analizador de Documentos', f_ext:'Extensión del Navegador',
+    ext_title:'Extensión del Navegador', ext_btn:'Descargar Extensión →',
+    ext_desc:'Instala la extensión Para en Chrome y obtén análisis automático de términos de servicio en cualquier sitio web.',
+    eex1:'Detecta automáticamente páginas de términos', eex2:'Escanea silenciosamente en segundo plano',
+    eex3:'Funciona en Chrome, Brave, Edge y Arc', eex4:'Un clic para ver el análisis completo',
     footer_disclaimer:'Para proporciona información legal general solo con fines educativos. Nada en esta plataforma constituye asesoramiento legal.',
     welcome:'¡Hola! Soy Para, tu asistente de información legal. Puedo ayudarte a entender tu situación legal, conocer tus derechos y encontrar los próximos pasos.\n\n¿Qué está pasando?',
     starters:['Tuve un accidente de auto','Mi arrendador no devuelve mi depósito','Recibí una citación judicial','Fui despedido injustamente','Necesito entender un contrato','Me están desalojando'],
@@ -868,6 +876,10 @@ const T = {
     full_analysis:'完整分析',
     footer_sub:'人人都能理解的法律。免费使用，支持多种语言。',
     f_chat:'AI法律助手', f_scan:'文件扫描器', f_ext:'浏览器扩展',
+    ext_title:'浏览器扩展', ext_btn:'下载扩展程序 →',
+    ext_desc:'安装Para Chrome扩展，在任何网站上自动扫描服务条款——无需复制粘贴。',
+    eex1:'自动检测服务条款页面', eex2:'在后台静默扫描',
+    eex3:'支持Chrome、Brave、Edge和Arc', eex4:'一键查看完整分析',
     footer_disclaimer:'Para仅出于教育目的提供一般法律信息。本平台上的任何内容均不构成法律建议。',
     welcome:'您好！我是Para，您的法律信息助手。我可以帮助您了解法律状况、知晓权利并找到下一步行动。\n\n发生了什么？',
     starters:['我发生了车祸','房东不归还我的押金','我收到了法庭传票','我被不公正地解雇','我需要理解一份合同','我正在被驱逐'],
@@ -1264,9 +1276,9 @@ applyTranslations();
     </div>
 
     <div style="display:flex;gap:10px;">
-      <a href="/tos-guard-extension.zip" download style="flex:1;background:#4f8ef7;color:#fff;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <button onclick="downloadExt()" style="flex:1;background:#4f8ef7;color:#fff;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
         ⬇ Download Extension
-      </a>
+      </button>
       <button onclick="document.getElementById('ext-modal').style.display='none'" style="background:transparent;border:1px solid #e8e4dc;border-radius:10px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:13px;color:#5a5a6a;cursor:pointer;">Close</button>
     </div>
   </div>
@@ -1274,6 +1286,15 @@ applyTranslations();
 <script>
 function showExtModal() {
   document.getElementById('ext-modal').style.display = 'flex';
+}
+function downloadExt() {
+  // Try direct download first; falls back to GitHub raw URL
+  const link = document.createElement('a');
+  link.href = 'https://raw.githubusercontent.com/lily-and-henry/lexa-app/main/tos-guard-extension.zip';
+  link.download = 'para-extension.zip';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 </script>
 </body>
