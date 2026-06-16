@@ -195,6 +195,10 @@ nav{
 .chat-card .card-btn:hover{background:var(--teal2)}
 .scan-card .card-btn{background:var(--ink);color:#fff}
 .scan-card .card-btn:hover{background:var(--ink2)}
+.ext-card::before{background:linear-gradient(135deg,rgba(79,142,247,0.06),transparent)}
+.ext-card .card-icon{background:#eef3ff}
+.ext-card .card-btn{background:#4f8ef7;color:#fff}
+.ext-card .card-btn:hover{background:#3a7aed}
 
 /* ─── SECTION DIVIDER ────────────────────────────────────────── */
 .section-rule{
@@ -550,7 +554,7 @@ footer{
 <nav>
   <div class="nav-logo" onclick="showHome()" style="cursor:pointer">
     <div class="nav-logo-mark">⚖</div>
-    Le<span>xa</span>
+    Pa<span>ra</span>
   </div>
   <div class="nav-right">
     <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
@@ -607,6 +611,19 @@ footer{
         <div class="card-example" data-t="sex4">Privacy policies</div>
       </div>
       <button class="card-btn" data-t="scan_btn">Scan a document →</button>
+    </div>
+
+    <div class="entry-card ext-card">
+      <div class="card-icon">🔌</div>
+      <div class="card-title">Browser Extension</div>
+      <div class="card-desc">Install the Para extension for Chrome and get automatic ToS scanning on any website — no copy-pasting required.</div>
+      <div class="card-examples">
+        <div class="card-example">Auto-detects Terms of Service pages</div>
+        <div class="card-example">Scans in the background silently</div>
+        <div class="card-example">Works on Chrome, Brave, Edge, Arc</div>
+        <div class="card-example">One click to see a full analysis</div>
+      </div>
+      <button class="card-btn" onclick="showExtModal()">Download Extension →</button>
     </div>
   </div>
 
@@ -728,7 +745,7 @@ footer{
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">Le<span>xa</span></div>
+      <div class="footer-brand">Pa<span>ra</span></div>
       <div class="footer-sub" data-t="footer_sub">Legal clarity for everyone. Free to use, available in multiple languages.</div>
     </div>
     <div style="font-size:12px;color:#555;line-height:2">
@@ -1220,6 +1237,44 @@ function openSettings() {
 
 // ─── INIT ──────────────────────────────────────────────────────
 applyTranslations();
+</script>
+
+<!-- EXTENSION DOWNLOAD MODAL -->
+<div id="ext-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(13,13,15,0.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px;">
+  <div style="background:#faf9f6;border-radius:20px;padding:32px;max-width:480px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,0.2);">
+    <div style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:400;margin-bottom:8px;letter-spacing:-0.5px;">Install the <span style="color:#4f8ef7">Extension</span></div>
+    <p style="font-size:13px;color:#5a5a6a;line-height:1.7;margin-bottom:20px;">The Para browser extension automatically detects Terms of Service pages and scans them for red flags — without you having to do anything.</p>
+
+    <div style="background:#f3f1ec;border-radius:12px;padding:16px;margin-bottom:20px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:#5a5a6a;margin-bottom:12px;">How to install</div>
+      <div style="font-size:13px;color:#2a2a30;line-height:2;">
+        <div>1. Click <strong>Download Extension</strong> below</div>
+        <div>2. Unzip the downloaded file</div>
+        <div>3. Open Chrome and go to <code style="background:#e8e4dc;padding:1px 6px;border-radius:4px;font-size:12px;">chrome://extensions</code></div>
+        <div>4. Turn on <strong>Developer Mode</strong> (top right)</div>
+        <div>5. Click <strong>Load unpacked</strong> → select the unzipped folder</div>
+        <div>6. The 🛡️ icon will appear in your toolbar</div>
+      </div>
+    </div>
+
+    <div style="background:#eef3ff;border:1px solid rgba(79,142,247,0.2);border-radius:10px;padding:12px 14px;margin-bottom:20px;font-size:12px;color:#1a3a6e;line-height:1.6;">
+      ✅ Works on Chrome, Brave, Edge, and Arc<br/>
+      ✅ Your API key stays secure on our server<br/>
+      ✅ Runs silently in the background
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="/tos-guard-extension.zip" download style="flex:1;background:#4f8ef7;color:#fff;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">
+        ⬇ Download Extension
+      </a>
+      <button onclick="document.getElementById('ext-modal').style.display='none'" style="background:transparent;border:1px solid #e8e4dc;border-radius:10px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:13px;color:#5a5a6a;cursor:pointer;">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+function showExtModal() {
+  document.getElementById('ext-modal').style.display = 'flex';
+}
 </script>
 </body>
 </html>
