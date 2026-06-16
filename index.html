@@ -1290,7 +1290,7 @@ function showExtModal() {
 function downloadExt() {
   // Try direct download first; falls back to GitHub raw URL
   const link = document.createElement('a');
-  link.href = 'https://raw.githubusercontent.com/lily-and-henry/lexa-app/main/tos-guard-extension.zip';
+  link.href = 'https://github.com/lily-and-henry/lexa-app/raw/main/tos-guard-extension.zip';
   link.download = 'para-extension.zip';
   document.body.appendChild(link);
   link.click();
