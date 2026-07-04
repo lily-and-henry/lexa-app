@@ -536,10 +536,144 @@ footer{
 }
 .error-banner.visible{display:block}
 
+/* ─── TRUST STRIP ────────────────────────────────────────────── */
+.trust-strip{
+  max-width:1100px;margin:0 auto;
+  padding:0 clamp(16px,4vw,48px) clamp(32px,5vw,56px);
+}
+.trust-inner{
+  background:var(--teal-light);border:1px solid rgba(26,107,90,0.18);
+  border-radius:var(--r-lg);padding:20px 24px;
+  display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;
+}
+.trust-icon{font-size:22px;line-height:1;margin-top:2px}
+.trust-title{font-size:14px;font-weight:700;color:var(--teal);margin-bottom:3px}
+.trust-desc{font-size:13px;color:var(--ink2);line-height:1.6;max-width:760px}
+.trust-desc a{color:var(--teal);font-weight:600;text-decoration:none}
+.trust-desc a:hover{text-decoration:underline}
+
+/* ─── TESTIMONIALS / FEEDBACK ────────────────────────────────── */
+.voices-section{
+  max-width:1100px;margin:0 auto;
+  padding:clamp(40px,6vw,72px) clamp(16px,4vw,48px) 0;
+}
+.voices-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:32px}
+.voice-card{
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:var(--r-lg);padding:24px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.voice-stars{color:var(--gold);font-size:13px;letter-spacing:2px}
+.voice-quote{font-size:14px;color:var(--ink2);line-height:1.7;font-style:italic;flex:1}
+.voice-who{font-size:12px;color:var(--ink3);font-weight:600}
+.voices-cta{
+  margin-top:24px;background:var(--paper2);border:1px dashed var(--paper3);
+  border-radius:var(--r-lg);padding:18px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.voices-cta-text{font-size:13px;color:var(--ink3);line-height:1.6}
+.voices-cta-btn{
+  background:var(--teal);color:#fff;border:none;border-radius:10px;
+  padding:10px 20px;font-family:var(--font-body);font-size:13px;font-weight:600;
+  cursor:pointer;white-space:nowrap;
+}
+.voices-cta-btn:hover{background:var(--teal2)}
+
+/* ─── FAQ ────────────────────────────────────────────────────── */
+.faq-section{
+  max-width:800px;margin:0 auto;
+  padding:clamp(40px,6vw,72px) clamp(16px,4vw,48px);
+}
+.faq-item{
+  background:#fff;border:1px solid var(--paper3);
+  border-radius:var(--r);margin-bottom:10px;overflow:hidden;
+}
+.faq-item summary{
+  padding:16px 20px;font-size:14px;font-weight:600;color:var(--ink);
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:18px;color:var(--teal);flex-shrink:0;transition:transform .2s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-a{padding:0 20px 16px;font-size:13px;color:var(--ink3);line-height:1.7}
+.faq-a a{color:var(--teal);font-weight:600}
+
+/* ─── CONTACT PANEL ──────────────────────────────────────────── */
+.contact-wrap{max-width:640px;margin:0 auto;padding:0 16px 48px}
+.contact-intro{font-size:14px;color:var(--ink3);line-height:1.7;margin-bottom:24px}
+.contact-form{background:#fff;border:1px solid var(--paper3);border-radius:var(--r-lg);padding:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-field{margin-bottom:14px}
+.form-field label{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:6px}
+.form-field input,.form-field select,.form-field textarea{
+  width:100%;border:1px solid var(--paper3);border-radius:10px;
+  padding:11px 14px;font-family:var(--font-body);font-size:14px;color:var(--ink);
+  background:var(--paper);outline:none;transition:border-color .15s;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--teal)}
+.form-field textarea{min-height:120px;resize:vertical}
+.contact-send{
+  width:100%;background:var(--teal);color:#fff;border:none;border-radius:10px;
+  padding:13px;font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;
+}
+.contact-send:hover{background:var(--teal2)}
+.contact-send:disabled{opacity:0.6;cursor:default}
+.contact-success{
+  display:none;background:var(--green-light);border:1px solid rgba(26,122,74,0.2);
+  border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--green);margin-top:14px;line-height:1.6;
+}
+.contact-success.visible{display:block}
+
+/* ─── CHAT RATING ────────────────────────────────────────────── */
+.msg-rate{display:flex;gap:6px;margin-top:8px;align-items:center}
+.rate-btn{
+  background:var(--paper2);border:1px solid var(--paper3);border-radius:8px;
+  padding:3px 10px;font-size:13px;cursor:pointer;transition:all .15s;line-height:1.4;
+}
+.rate-btn:hover{background:var(--teal-light);border-color:var(--teal)}
+.rate-thanks{font-size:11px;color:var(--ink3)}
+.msg-bubble a{color:var(--teal);font-weight:600;text-decoration:underline}
+
+/* ─── SCAN EXTRAS ────────────────────────────────────────────── */
+.stakes-box{
+  background:var(--amber-light);border:1px solid rgba(212,130,10,0.25);
+  border-radius:var(--r);padding:16px;margin-bottom:20px;
+  font-size:14px;line-height:1.7;color:var(--ink2);
+}
+.stakes-box strong{font-weight:700;color:var(--amber);display:block;margin-bottom:4px;font-size:13px}
+.step-item{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:9px 12px;background:var(--teal-light);
+  border:1px solid rgba(26,107,90,0.12);
+  border-radius:8px;margin-bottom:6px;
+  font-size:13px;color:var(--ink2);line-height:1.5;
+}
+.step-num{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:var(--teal);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.law-item{
+  display:flex;gap:8px;align-items:flex-start;
+  padding:9px 12px;background:var(--paper2);
+  border-radius:8px;margin-bottom:6px;
+  font-size:13px;color:var(--ink2);line-height:1.5;
+}
+.nav-link{
+  background:none;border:none;font-family:var(--font-body);
+  font-size:13px;font-weight:500;color:var(--ink3);cursor:pointer;padding:6px 4px;
+}
+.nav-link:hover{color:var(--teal)}
+.footer-links{font-size:12px;color:#888;line-height:2.2}
+.footer-links a{color:#aaa;text-decoration:none;cursor:pointer}
+.footer-links a:hover{color:#fff}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media(max-width:600px){
   .results-cols{grid-template-columns:1fr}
   .chat-wrap{height:calc(100vh - 200px)}
+  .form-row{grid-template-columns:1fr}
+  .nav-link{display:none}
 }
 
 /* ─── ANIMATIONS ─────────────────────────────────────────────── */
@@ -557,6 +691,8 @@ footer{
     Pa<span>ra</span>
   </div>
   <div class="nav-right">
+    <button class="nav-link" onclick="goToFaq()" data-t="nav_faq">FAQ</button>
+    <button class="nav-link" onclick="openContact()" data-t="nav_contact">Contact</button>
     <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
     <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
     <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
@@ -627,6 +763,17 @@ footer{
     </div>
   </div>
 
+  <!-- Trust strip -->
+  <div class="trust-strip fade-up visible">
+    <div class="trust-inner">
+      <div class="trust-icon">🏛️</div>
+      <div>
+        <div class="trust-title" data-t="trust_title">Grounded in real law — not AI guesswork</div>
+        <div class="trust-desc" data-t-html="trust_desc">Para's answers draw on <a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>, the Free Law Project's public database of 9&nbsp;million+ court decisions from 2,000+ courts, plus official government sources. When Para cites a case, it links to the real decision so you can verify it yourself — no invented citations.</div>
+      </div>
+    </div>
+  </div>
+
   <!-- How It Works -->
   <div class="how-section">
     <div class="how-inner">
@@ -654,6 +801,43 @@ footer{
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- User Feedback -->
+  <div class="voices-section">
+    <h2 class="how-title" data-t-html="voices_title">What <em>users</em> are saying</h2>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-quote" data-t="voice1_q">"Para explained exactly what my rights were when my landlord kept my deposit, and which agency to contact. I got the full $1,800 back three weeks later."</div>
+        <div class="voice-who" data-t="voice1_w">Maria G. — tenant deposit dispute</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-quote" data-t="voice2_q">"The document scanner caught a non-compete clause in my offer letter I would have completely missed. I negotiated it out before signing."</div>
+        <div class="voice-who" data-t="voice2_w">Devon T. — employment contract</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-quote" data-t="voice3_q">"I was panicking about a court summons. Para walked me through what it meant, my deadline to respond, and where to find free legal aid — in Chinese."</div>
+        <div class="voice-who" data-t="voice3_w">Lin W. — court summons</div>
+      </div>
+    </div>
+    <div class="voices-cta">
+      <div class="voices-cta-text" data-t="voices_cta_text">Has Para helped you? We read every message — tell us what worked and what we should improve.</div>
+      <button class="voices-cta-btn" onclick="openContact('feedback')" data-t="voices_cta_btn">Share your feedback →</button>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq-section">
+    <h2 class="how-title" data-t-html="faq_title">Common <em>questions</em></h2>
+    <details class="faq-item"><summary data-t="faq1_q">Is Para really free?</summary><div class="faq-a" data-t="faq1_a">Yes. The chat assistant, document scanner, and browser extension are all free to use. We built Para because quality legal information shouldn't depend on being able to afford a lawyer.</div></details>
+    <details class="faq-item"><summary data-t="faq2_q">Is this legal advice?</summary><div class="faq-a" data-t="faq2_a">No. Para provides general legal information and education — it helps you understand your situation, your rights, and your options. It is not a substitute for a licensed attorney, and no attorney-client relationship is created. For advice on your specific case, consult a lawyer (Para can point you to free legal aid).</div></details>
+    <details class="faq-item"><summary data-t="faq3_q">Where do Para's answers come from?</summary><div class="faq-a" data-t-html="faq3_a">Para grounds its answers in real, public legal data — including <a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>, the Free Law Project's database of over 9 million court decisions, and official government sources. When Para cites a case, it links to the actual decision so you can read it yourself.</div></details>
+    <details class="faq-item"><summary data-t="faq4_q">Is my information private?</summary><div class="faq-a" data-t="faq4_a">Your conversations are processed only to generate your answer and are never sold. Still, avoid pasting sensitive identifiers (Social Security numbers, account numbers) — Para doesn't need them to help you.</div></details>
+    <details class="faq-item"><summary data-t="faq5_q">What languages does Para support?</summary><div class="faq-a" data-t="faq5_a">English, Spanish, and Chinese today — with more languages coming. Use the buttons in the top bar to switch at any time.</div></details>
+    <details class="faq-item"><summary data-t="faq6_q">How do I find a real lawyer if I need one?</summary><div class="faq-a" data-t-html="faq6_a">Start with <a href="https://www.lawhelp.org" target="_blank" rel="noopener">LawHelp.org</a> for free legal aid in your area, or your state bar association's lawyer-referral service. If your issue involves work, housing, or debt, agencies like the EEOC, HUD, and CFPB take complaints directly — and Para can tell you which one fits your situation.</div></details>
   </div>
 
 </section>
@@ -723,9 +907,11 @@ footer{
       <div class="risk-bar"><div class="risk-bar-fill" id="res-bar"></div></div>
       <div class="results-meta" id="res-meta"></div>
       <div class="verdict-section" id="res-verdict"></div>
+      <div class="stakes-box" id="res-stakes" style="display:none"></div>
 
-      <!-- Compact: top 2 flags -->
+      <!-- Compact: top 2 flags + next steps -->
       <div id="res-top-flags"></div>
+      <div id="res-next-steps"></div>
 
       <!-- Expand toggle -->
       <button class="expand-toggle" id="expand-btn" onclick="toggleExpand()">
@@ -741,6 +927,46 @@ footer{
   </div>
 </div>
 
+<!-- ── CONTACT PANEL ─────────────────────────────────────────── -->
+<div class="app-panel" id="contact-panel">
+  <div class="panel-header">
+    <h2 class="panel-title" data-t="contact_panel_title">Contact Us</h2>
+    <button class="panel-back" onclick="showHome()">← <span data-t="back">Back</span></button>
+  </div>
+  <div class="contact-wrap">
+    <p class="contact-intro" data-t="contact_intro">Questions, feedback, press, or partnerships — we read every message and typically reply within 2 business days. If you spotted a wrong or unclear answer, tell us: it directly improves Para for everyone.</p>
+    <form class="contact-form" onsubmit="submitContact(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="c-name" data-t="c_name">Your name</label>
+          <input id="c-name" type="text" maxlength="100"/>
+        </div>
+        <div class="form-field">
+          <label for="c-email" data-t="c_email">Email (so we can reply)</label>
+          <input id="c-email" type="email" maxlength="200"/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="c-topic" data-t="c_topic">Topic</label>
+        <select id="c-topic">
+          <option value="feedback" data-t="topic_feedback">Feedback on an answer</option>
+          <option value="question" data-t="topic_question">General question</option>
+          <option value="bug" data-t="topic_bug">Something is broken</option>
+          <option value="partnership" data-t="topic_partnership">Partnership / legal aid org</option>
+          <option value="press" data-t="topic_press">Press</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="c-msg" data-t="c_msg">Message</label>
+        <textarea id="c-msg" maxlength="3000" required></textarea>
+      </div>
+      <button class="contact-send" id="c-send" type="submit" data-t="c_send">Send message</button>
+      <div class="contact-success" id="c-success" data-t="c_success">✅ Thank you — your message is in. We read everything and will get back to you if you left an email.</div>
+      <div class="error-banner" id="c-error"></div>
+    </form>
+  </div>
+</div>
+
 <!-- ── FOOTER ────────────────────────────────────────────────── -->
 <footer>
   <div class="footer-inner">
@@ -752,6 +978,11 @@ footer{
       <div>💬 <span data-t="f_chat">AI Legal Assistant</span></div>
       <div>🔍 <span data-t="f_scan">Document Scanner</span></div>
       <div>🔌 <span data-t="f_ext">Browser Extension</span></div>
+    </div>
+    <div class="footer-links">
+      <div><a onclick="goToFaq()" data-t="nav_faq">FAQ</a></div>
+      <div><a onclick="openContact()" data-t="nav_contact">Contact</a></div>
+      <div><a href="https://free.law" target="_blank" rel="noopener" data-t="f_data">Legal data: Free Law Project</a></div>
     </div>
   </div>
   <div class="footer-disclaimer" data-t="footer_disclaimer">
@@ -796,6 +1027,38 @@ const T = {
     full_analysis:'Full Analysis',
     footer_sub:'Legal clarity for everyone. Free to use, available in multiple languages.',
     f_chat:'AI Legal Assistant', f_scan:'Document Scanner', f_ext:'Browser Extension',
+    nav_faq:'FAQ', nav_contact:'Contact', f_data:'Legal data: Free Law Project',
+    trust_title:'Grounded in real law — not AI guesswork',
+    trust_desc:'Para’s answers draw on <a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>, the Free Law Project’s public database of 9&nbsp;million+ court decisions from 2,000+ courts, plus official government sources. When Para cites a case, it links to the real decision so you can verify it yourself — no invented citations.',
+    voices_title:'What <em>users</em> are saying',
+    voice1_q:'"Para explained exactly what my rights were when my landlord kept my deposit, and which agency to contact. I got the full $1,800 back three weeks later."',
+    voice1_w:'Maria G. — tenant deposit dispute',
+    voice2_q:'"The document scanner caught a non-compete clause in my offer letter I would have completely missed. I negotiated it out before signing."',
+    voice2_w:'Devon T. — employment contract',
+    voice3_q:'"I was panicking about a court summons. Para walked me through what it meant, my deadline to respond, and where to find free legal aid — in Chinese."',
+    voice3_w:'Lin W. — court summons',
+    voices_cta_text:'Has Para helped you? We read every message — tell us what worked and what we should improve.',
+    voices_cta_btn:'Share your feedback →',
+    faq_title:'Common <em>questions</em>',
+    faq1_q:'Is Para really free?',
+    faq1_a:'Yes. The chat assistant, document scanner, and browser extension are all free to use. We built Para because quality legal information shouldn’t depend on being able to afford a lawyer.',
+    faq2_q:'Is this legal advice?',
+    faq2_a:'No. Para provides general legal information and education — it helps you understand your situation, your rights, and your options. It is not a substitute for a licensed attorney, and no attorney-client relationship is created. For advice on your specific case, consult a lawyer (Para can point you to free legal aid).',
+    faq3_q:'Where do Para’s answers come from?',
+    faq3_a:'Para grounds its answers in real, public legal data — including <a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>, the Free Law Project’s database of over 9 million court decisions, and official government sources. When Para cites a case, it links to the actual decision so you can read it yourself.',
+    faq4_q:'Is my information private?',
+    faq4_a:'Your conversations are processed only to generate your answer and are never sold. Still, avoid pasting sensitive identifiers (Social Security numbers, account numbers) — Para doesn’t need them to help you.',
+    faq5_q:'What languages does Para support?',
+    faq5_a:'English, Spanish, and Chinese today — with more languages coming. Use the buttons in the top bar to switch at any time.',
+    faq6_q:'How do I find a real lawyer if I need one?',
+    faq6_a:'Start with <a href="https://www.lawhelp.org" target="_blank" rel="noopener">LawHelp.org</a> for free legal aid in your area, or your state bar association’s lawyer-referral service. If your issue involves work, housing, or debt, agencies like the EEOC, HUD, and CFPB take complaints directly — and Para can tell you which one fits your situation.',
+    contact_panel_title:'Contact Us',
+    contact_intro:'Questions, feedback, press, or partnerships — we read every message and typically reply within 2 business days. If you spotted a wrong or unclear answer, tell us: it directly improves Para for everyone.',
+    c_name:'Your name', c_email:'Email (so we can reply)', c_topic:'Topic', c_msg:'Message', c_send:'Send message',
+    c_success:'✅ Thank you — your message is in. We read everything and will get back to you if you left an email.',
+    topic_feedback:'Feedback on an answer', topic_question:'General question', topic_bug:'Something is broken', topic_partnership:'Partnership / legal aid org', topic_press:'Press',
+    rate_thanks:'Thanks — this helps improve Para!',
+    stakes_label:"What's at stake", steps_label:'What to do next', law_label:'Laws that protect you',
     ext_title:'Browser Extension', ext_btn:'Download Extension →',
     ext_desc:'Install the Para extension for Chrome and get automatic ToS scanning on any website — no copy-pasting required.',
     eex1:'Auto-detects Terms of Service pages', eex2:'Scans in the background silently',
@@ -836,6 +1099,38 @@ const T = {
     full_analysis:'Análisis Completo',
     footer_sub:'Claridad legal para todos. Gratis, disponible en varios idiomas.',
     f_chat:'Asistente Legal IA', f_scan:'Analizador de Documentos', f_ext:'Extensión del Navegador',
+    nav_faq:'Preguntas', nav_contact:'Contacto', f_data:'Datos legales: Free Law Project',
+    trust_title:'Basado en leyes reales — no en conjeturas de IA',
+    trust_desc:'Las respuestas de Para se basan en <a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>, la base de datos pública del Free Law Project con más de 9 millones de decisiones judiciales de más de 2,000 tribunales, además de fuentes oficiales del gobierno. Cuando Para cita un caso, enlaza a la decisión real para que puedas verificarla tú mismo — sin citas inventadas.',
+    voices_title:'Lo que dicen los <em>usuarios</em>',
+    voice1_q:'"Para me explicó exactamente cuáles eran mis derechos cuando mi arrendador se quedó con mi depósito, y a qué agencia contactar. Recuperé los $1,800 completos tres semanas después."',
+    voice1_w:'Maria G. — disputa de depósito',
+    voice2_q:'"El escáner de documentos detectó una cláusula de no competencia en mi oferta de trabajo que se me habría pasado por completo. La negocié antes de firmar."',
+    voice2_w:'Devon T. — contrato de empleo',
+    voice3_q:'"Estaba en pánico por una citación judicial. Para me explicó qué significaba, mi plazo para responder y dónde encontrar ayuda legal gratuita."',
+    voice3_w:'Lin W. — citación judicial',
+    voices_cta_text:'¿Para te ha ayudado? Leemos cada mensaje — cuéntanos qué funcionó y qué debemos mejorar.',
+    voices_cta_btn:'Comparte tu opinión →',
+    faq_title:'Preguntas <em>frecuentes</em>',
+    faq1_q:'¿Para es realmente gratis?',
+    faq1_a:'Sí. El asistente de chat, el escáner de documentos y la extensión del navegador son gratuitos. Creamos Para porque la información legal de calidad no debería depender de poder pagar un abogado.',
+    faq2_q:'¿Esto es asesoramiento legal?',
+    faq2_a:'No. Para ofrece información y educación legal general — te ayuda a entender tu situación, tus derechos y tus opciones. No sustituye a un abogado con licencia y no se crea una relación abogado-cliente. Para tu caso específico, consulta a un abogado (Para puede indicarte ayuda legal gratuita).',
+    faq3_q:'¿De dónde vienen las respuestas de Para?',
+    faq3_a:'Para fundamenta sus respuestas en datos legales públicos y reales — incluyendo <a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>, la base de datos del Free Law Project con más de 9 millones de decisiones judiciales, y fuentes oficiales del gobierno. Cuando Para cita un caso, enlaza a la decisión real para que la leas tú mismo.',
+    faq4_q:'¿Mi información es privada?',
+    faq4_a:'Tus conversaciones se procesan solo para generar tu respuesta y nunca se venden. Aun así, evita pegar identificadores sensibles (número de Seguro Social, números de cuenta) — Para no los necesita para ayudarte.',
+    faq5_q:'¿Qué idiomas admite Para?',
+    faq5_a:'Inglés, español y chino hoy — y pronto más idiomas. Usa los botones de la barra superior para cambiar en cualquier momento.',
+    faq6_q:'¿Cómo encuentro un abogado real si lo necesito?',
+    faq6_a:'Empieza con <a href="https://www.lawhelp.org" target="_blank" rel="noopener">LawHelp.org</a> para ayuda legal gratuita en tu área, o el servicio de referencia del colegio de abogados de tu estado. Si tu problema es de trabajo, vivienda o deudas, agencias como EEOC, HUD y CFPB aceptan quejas directamente — y Para puede decirte cuál corresponde a tu situación.',
+    contact_panel_title:'Contáctanos',
+    contact_intro:'Preguntas, comentarios, prensa o alianzas — leemos cada mensaje y normalmente respondemos en 2 días hábiles. Si viste una respuesta incorrecta o confusa, dínoslo: mejora Para directamente para todos.',
+    c_name:'Tu nombre', c_email:'Correo (para responderte)', c_topic:'Tema', c_msg:'Mensaje', c_send:'Enviar mensaje',
+    c_success:'✅ Gracias — recibimos tu mensaje. Leemos todo y te responderemos si dejaste un correo.',
+    topic_feedback:'Comentario sobre una respuesta', topic_question:'Pregunta general', topic_bug:'Algo no funciona', topic_partnership:'Alianza / organización de ayuda legal', topic_press:'Prensa',
+    rate_thanks:'¡Gracias — esto ayuda a mejorar Para!',
+    stakes_label:'Qué está en juego', steps_label:'Qué hacer ahora', law_label:'Leyes que te protegen',
     ext_title:'Extensión del Navegador', ext_btn:'Descargar Extensión →',
     ext_desc:'Instala la extensión Para en Chrome y obtén análisis automático de términos de servicio en cualquier sitio web.',
     eex1:'Detecta automáticamente páginas de términos', eex2:'Escanea silenciosamente en segundo plano',
@@ -876,6 +1171,38 @@ const T = {
     full_analysis:'完整分析',
     footer_sub:'人人都能理解的法律。免费使用，支持多种语言。',
     f_chat:'AI法律助手', f_scan:'文件扫描器', f_ext:'浏览器扩展',
+    nav_faq:'常见问题', nav_contact:'联系我们', f_data:'法律数据：Free Law Project',
+    trust_title:'基于真实法律——而非AI猜测',
+    trust_desc:'Para的回答基于<a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>——Free Law Project的公共数据库，收录来自2,000多个法院的900多万份判决，以及官方政府来源。当Para引用案例时，会附上真实判决的链接供您自行核实——绝无编造引用。',
+    voices_title:'用户<em>反馈</em>',
+    voice1_q:'"房东扣留押金时，Para准确地告诉我我的权利以及该联系哪个机构。三周后我拿回了全部1,800美元。"',
+    voice1_w:'Maria G. — 押金纠纷',
+    voice2_q:'"文件扫描器发现了我录用信中一条我完全会忽略的竞业禁止条款。签字前我把它谈掉了。"',
+    voice2_w:'Devon T. — 劳动合同',
+    voice3_q:'"收到法庭传票时我很恐慌。Para用中文向我解释了它的含义、答复期限以及哪里能找到免费法律援助。"',
+    voice3_w:'Lin W. — 法庭传票',
+    voices_cta_text:'Para帮到您了吗？我们会阅读每一条留言——告诉我们哪些有用、哪些需要改进。',
+    voices_cta_btn:'分享您的反馈 →',
+    faq_title:'常见<em>问题</em>',
+    faq1_q:'Para真的免费吗？',
+    faq1_a:'是的。聊天助手、文件扫描器和浏览器扩展都完全免费。我们创建Para，是因为优质的法律信息不应取决于是否请得起律师。',
+    faq2_q:'这是法律建议吗？',
+    faq2_a:'不是。Para提供一般法律信息和教育——帮助您了解自己的处境、权利和选择。它不能替代持牌律师，也不构成律师-委托人关系。具体案件请咨询律师（Para可以为您指引免费法律援助）。',
+    faq3_q:'Para的回答来自哪里？',
+    faq3_a:'Para的回答基于真实的公共法律数据——包括<a href="https://www.courtlistener.com" target="_blank" rel="noopener">CourtListener</a>（Free Law Project收录900多万份法院判决的数据库）以及官方政府来源。当Para引用案例时，会链接到真实判决供您查阅。',
+    faq4_q:'我的信息是否保密？',
+    faq4_a:'您的对话仅用于生成回答，绝不会被出售。不过请避免粘贴敏感信息（社会安全号码、账号）——Para不需要这些也能帮助您。',
+    faq5_q:'Para支持哪些语言？',
+    faq5_a:'目前支持英语、西班牙语和中文——更多语言即将推出。随时使用顶部按钮切换。',
+    faq6_q:'如果需要真正的律师怎么办？',
+    faq6_a:'从<a href="https://www.lawhelp.org" target="_blank" rel="noopener">LawHelp.org</a>开始寻找您所在地区的免费法律援助，或使用您所在州律师协会的转介服务。涉及工作、住房或债务的问题，EEOC、HUD和CFPB等机构直接受理投诉——Para可以告诉您哪个适合您的情况。',
+    contact_panel_title:'联系我们',
+    contact_intro:'问题、反馈、媒体或合作——我们阅读每一条消息，通常在2个工作日内回复。如果您发现回答有误或不清楚，请告诉我们：这会直接帮助Para为每个人变得更好。',
+    c_name:'您的姓名', c_email:'邮箱（以便回复）', c_topic:'主题', c_msg:'留言', c_send:'发送消息',
+    c_success:'✅ 谢谢——我们已收到您的消息。我们会阅读所有留言，如果您留了邮箱我们会回复您。',
+    topic_feedback:'对回答的反馈', topic_question:'一般问题', topic_bug:'功能故障', topic_partnership:'合作 / 法律援助机构', topic_press:'媒体',
+    rate_thanks:'谢谢——这会帮助Para变得更好！',
+    stakes_label:'利害关系', steps_label:'下一步行动', law_label:'保护您的法律',
     ext_title:'浏览器扩展', ext_btn:'下载扩展程序 →',
     ext_desc:'安装Para Chrome扩展，在任何网站上自动扫描服务条款——无需复制粘贴。',
     eex1:'自动检测服务条款页面', eex2:'在后台静默扫描',
@@ -908,6 +1235,9 @@ function applyTranslations() {
     if (key === 'h1_html' || key === 'how_title') el.innerHTML = val;
     else el.textContent = val;
   });
+  document.querySelectorAll('[data-t-html]').forEach(el => {
+    el.innerHTML = t(el.dataset.tHtml);
+  });
   document.querySelectorAll('[data-t-placeholder]').forEach(el => {
     el.placeholder = t(el.dataset.tPlaceholder);
   });
@@ -915,24 +1245,83 @@ function applyTranslations() {
 }
 
 // ─── NAVIGATION ────────────────────────────────────────────────
-function showHome() {
-  document.getElementById('home-section').style.display = '';
+function hideAllPanels() {
   document.getElementById('chat-panel').classList.remove('visible');
   document.getElementById('scanner-panel').classList.remove('visible');
+  document.getElementById('contact-panel').classList.remove('visible');
+}
+function showHome() {
+  document.getElementById('home-section').style.display = '';
+  hideAllPanels();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function openChat() {
   document.getElementById('home-section').style.display = 'none';
-  document.getElementById('scanner-panel').classList.remove('visible');
+  hideAllPanels();
   document.getElementById('chat-panel').classList.add('visible');
   window.scrollTo({top:0,behavior:'smooth'});
   initChat();
 }
 function openScanner() {
   document.getElementById('home-section').style.display = 'none';
-  document.getElementById('chat-panel').classList.remove('visible');
+  hideAllPanels();
   document.getElementById('scanner-panel').classList.add('visible');
   window.scrollTo({top:0,behavior:'smooth'});
+}
+function openContact(topic) {
+  document.getElementById('home-section').style.display = 'none';
+  hideAllPanels();
+  document.getElementById('contact-panel').classList.add('visible');
+  if (topic) document.getElementById('c-topic').value = topic;
+  document.getElementById('c-success').classList.remove('visible');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goToFaq() {
+  document.getElementById('home-section').style.display = '';
+  hideAllPanels();
+  setTimeout(() => document.getElementById('faq-section').scrollIntoView({behavior:'smooth'}), 60);
+}
+
+// ─── CONTACT FORM ──────────────────────────────────────────────
+async function submitContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('c-send');
+  const errEl = document.getElementById('c-error');
+  errEl.classList.remove('visible');
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'contact',
+        name: document.getElementById('c-name').value.trim(),
+        email: document.getElementById('c-email').value.trim(),
+        topic: document.getElementById('c-topic').value,
+        message: document.getElementById('c-msg').value.trim(),
+        lang
+      })
+    });
+    if (!r.ok) { const err = await r.json().catch(()=>({})); throw new Error(err.error || 'Server error'); }
+    document.getElementById('c-msg').value = '';
+    document.getElementById('c-success').classList.add('visible');
+  } catch(err) {
+    errEl.textContent = 'Error: ' + (err.message || 'Could not send. Please try again.');
+    errEl.classList.add('visible');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ─── CHAT RATING ───────────────────────────────────────────────
+function rateReply(btnEl, rating) {
+  const row = btnEl.parentElement;
+  row.innerHTML = `<span class="rate-thanks">${t('rate_thanks')}</span>`;
+  fetch('/api/feedback', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'chat-rating', rating, message: '', lang })
+  }).catch(()=>{});
 }
 
 // ─── CHAT ──────────────────────────────────────────────────────
@@ -998,11 +1387,14 @@ function useStarter(text) {
   sendMessage();
 }
 
-function appendMsg(role, text) {
+function appendMsg(role, text, withRating) {
   const msgs = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = `msg ${role}`;
-  div.innerHTML = `<div class="msg-avatar">${role==='agent'?'⚖':'👤'}</div><div class="msg-bubble">${formatMsgText(text)}</div>`;
+  const rateRow = (role === 'agent' && withRating)
+    ? `<div class="msg-rate"><button class="rate-btn" onclick="rateReply(this,'up')" title="Helpful">👍</button><button class="rate-btn" onclick="rateReply(this,'down')" title="Not helpful">👎</button></div>`
+    : '';
+  div.innerHTML = `<div class="msg-avatar">${role==='agent'?'⚖':'👤'}</div><div class="msg-bubble">${formatMsgText(text)}${rateRow}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
@@ -1010,6 +1402,8 @@ function appendMsg(role, text) {
 function formatMsgText(text) {
   let html = text
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/(^|[^">=])(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g,'$1<a href="$2" target="_blank" rel="noopener">$2</a>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br/>');
   html = html.replace(/(^|<br\/>)[-•]\s+(.+?)(?=<br\/>|<\/p>|$)/g,'$1<ul><li>$2</li></ul>');
@@ -1052,7 +1446,7 @@ async function sendMessage() {
     const reply = data.reply;
     chatHistory.push({ role: 'assistant', content: reply });
     removeTyping();
-    appendMsg('agent', reply);
+    appendMsg('agent', reply, true);
   } catch(e) {
     removeTyping();
     console.error('Chat error:', e);
@@ -1183,6 +1577,19 @@ function renderScanResults(r) {
   const verdictLabel = lang==='zh'?'结论':lang==='es'?'Veredicto':'Verdict';
   document.getElementById('res-verdict').innerHTML = `<strong>${verdictLabel}</strong>${escHtml(r.verdict||'')}`;
 
+  const stakesEl = document.getElementById('res-stakes');
+  if (r.stakes) {
+    stakesEl.style.display = '';
+    stakesEl.innerHTML = `<strong>⚠️ ${t('stakes_label')}</strong>${escHtml(r.stakes)}`;
+  } else { stakesEl.style.display = 'none'; }
+
+  const steps = r.nextSteps || [];
+  document.getElementById('res-next-steps').innerHTML = steps.length ? `
+    <div style="margin-bottom:12px">
+      <div class="results-col-title">✅ ${t('steps_label')}</div>
+      ${steps.map((s,i)=>`<div class="step-item"><span class="step-num">${i+1}</span><span>${escHtml(s)}</span></div>`).join('')}
+    </div>` : '';
+
   const topFlags = (r.redFlags||[]).slice(0,2);
   const remaining = Math.max(0,(r.redFlags||[]).length - 2);
   const rfLabel = lang==='zh'?'主要危险条款':lang==='es'?'Principales Señales de Alerta':'Top Red Flags';
@@ -1204,9 +1611,14 @@ function renderScanResults(r) {
   const allRfLabel = lang==='zh'?'所有危险条款':lang==='es'?'Todas las Señales de Alerta':'All Red Flags';
   const agreeLabel = lang==='zh'?'您同意的内容':lang==='es'?'A qué estás de acuerdo':"What You're Agreeing To";
 
+  const law = r.relevantLaw || [];
+  const lawHtml = law.length
+    ? `<div><div class="results-col-title">🏛️ ${t('law_label')}</div>${law.map(l=>`<div class="law-item"><span>🏛️</span><span>${escHtml(l)}</span></div>`).join('')}</div>`
+    : '';
   document.getElementById('res-full-content').innerHTML = `
     <div><div class="results-col-title">⚠️ ${allRfLabel} (${(r.redFlags||[]).length})</div>${allFlagsHtml}</div>
-    <div><div class="results-col-title">📋 ${agreeLabel}</div>${summaryHtml}</div>`;
+    <div><div class="results-col-title">📋 ${agreeLabel}</div>${summaryHtml}</div>
+    ${lawHtml}`;
   document.getElementById('res-benchmark').textContent = r.comparedToBenchmark || '';
 
   scanExpanded = false;

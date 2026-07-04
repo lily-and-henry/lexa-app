@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'Server misconfigured.' });
 
   const langLabel = lang === 'es' ? 'Spanish' : lang === 'zh' ? 'Chinese (Simplified)' : 'English';
-  const prompt = `You are a legal expert analyzing Terms of Service and Privacy Policies to protect everyday users. Analyze the following text and respond with ONLY valid JSON — no markdown, no explanation outside the JSON.
+  const prompt = `You are a legal expert analyzing Terms of Service, contracts, and Privacy Policies to protect everyday users. Analyze the following text and respond with ONLY valid JSON — no markdown, no explanation outside the JSON.
 
 Required JSON structure:
 {
@@ -46,7 +46,10 @@ Required JSON structure:
   "dataCollection": "<Minimal | Standard | Extensive | Invasive>",
   "userRights": "<Strong | Moderate | Limited | Very Limited>",
   "verdict": "<2 plain-language sentences for a regular person>",
-  "comparedToBenchmark": "<1 sentence comparing to typical acceptable ToS>"
+  "comparedToBenchmark": "<1 sentence comparing to typical acceptable ToS>",
+  "stakes": "<2-3 plain sentences: what the user concretely risks by agreeing — worst realistic outcomes, what rights they sign away, what it could cost them>",
+  "nextSteps": [<3-5 concrete actions to take before or after agreeing, in priority order — e.g. what to negotiate, what to screenshot, opt-outs to exercise with the exact setting/form name if the document mentions one, deadlines to calendar>],
+  "relevantLaw": [<up to 3 strings, each naming a REAL law or regulation that governs clauses like these and one phrase on why it matters here — e.g. "CCPA (California): gives you the right to demand deletion of collected data". Only name laws you are certain exist. NEVER invent case names or statute numbers — omit rather than guess.>]
 }
 
 Respond in ${langLabel} for all text fields except JSON keys.
@@ -60,7 +63,7 @@ ${text.slice(0, 9000)}
     const upstream = await fetch(ANTHROPIC_API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
+      body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] })
     });
     if (!upstream.ok) { const e = await upstream.json(); return res.status(502).json({ error: e.error?.message || 'Upstream error' }); }
     const data = await upstream.json();
